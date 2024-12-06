@@ -41,9 +41,9 @@
         "title": "Modern Footer",
         "category": "feature",
         "icon": {
-            "name": "fas fa-cogs",  // Yeni ikon
-            "backgroundColor": "#3498db",  // Yeni arka plan rengi
-            "color": "#fff"  // Metin rengi aynı kaldı
+            "name": "fas fa-cogs",
+            "backgroundColor": "#3498db",
+            "color": "#fff"
         }
     }
 },
