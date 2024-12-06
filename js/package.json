@@ -1,5 +1,5 @@
 {
-  "name": "@fof/custom-footer",
+  "name": "@huseyinfiliz/modern-footer",
   "private": true,
   "prettier": "@flarum/prettier-config",
   "dependencies": {
