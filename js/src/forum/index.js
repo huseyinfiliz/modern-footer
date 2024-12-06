@@ -6,7 +6,7 @@ import CustomFooter from './components/CustomFooter';
 
 app.initializers.add('huseyinfiliz-modern-footer', () => {
   extend(ForumApplication.prototype, 'mount', () => {
-    const footer = document.createElement('div');
+    const footer = document.createElement('footer');
 
     m.mount(document.body.appendChild(footer), CustomFooter);
   });
