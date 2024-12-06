@@ -29,7 +29,7 @@
         }
     ],
     "replace": {
-        "FriendsOfFlarum/custom-footer": "*"
+        "fof/custom-footer": "*"
     },
     "autoload": {
         "psr-4": {
