@@ -14,17 +14,48 @@ export default class CustomFooter extends Component {
 
   view() {
     return (
-      <div id="ModernFooter" className={this.open && 'showing'}>
-        <div className="container">
-          <div className="Footer--Content" style={`height: ${this.open ? app.forum.attribute('huseyinfiliz-modern-footer.height') || 50 : 0}px;`}>
-            {m.trust(app.forum.attribute('huseyinfiliz-modern-footer.text') || '')}
-          </div>
-          <div className="Footer--Icons">
-            <i className={`Footer--Show fas fa-info-circle ${this.open && 'hidden'}`} onclick={() => (this.open = true)} />
-            <i className={`Footer--Hide fas fa-caret-down ${!this.open && 'hidden'}`} onclick={() => (this.open = false)} />
-          </div>
-        </div>
+<footer>
+  <div class="row">
+    <div class="foo-left">
+      <div>
+        <h3>{m.trust(app.forum.attribute('huseyinfiliz-modern-footer.text') || '')}</h3>
+        <p>© 2024, All Rights Reserved</p>
+        <button class="Button Button--primary"><span class="Button-label"><a href="#contact">Report Abusive Content</a></span></button>
+
       </div>
+    </div>
+    <div class="foo-mid">
+      <div>
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#">Example Link</a></li>
+          <li><a href="#">Example Link</a></li>
+          <li><a href="#">Example Link</a></li>
+          <li><a href="#">Example Link</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foo-mid">
+      <div>
+        <h3>Links</h3>
+        <ul>
+          <li><a href="#" target="_blank">Example Link</a></li>
+          <li><a href="#" target="_blank">Example Link</a></li>
+          <li><a href="#" target="_blank">Example Link</a></li>
+          <li><a href="#" target="_blank">Example Link</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foo-right">
+      <div>
+        <h3>Disclaimer</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer in auctor velit. Nam tincidunt venenatis mi non efficitur. Etiam ullamcorper, augue.</p>
+      </div>
+    </div>
+
+  </div>
+</footer>
     );
   }
 }
