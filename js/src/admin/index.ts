@@ -1,23 +1,23 @@
 import app from 'flarum/admin/app';
 
-app.initializers.add('fof-custom-footer', () => {
+app.initializers.add('huseyinfiliz-modern-footer', () => {
   app.extensionData
-    .for('fof-custom-footer')
+    .for('huseyinfiliz-modern-footer')
     .registerSetting({
-      label: app.translator.trans('fof-custom-footer.admin.settings.text'),
-      setting: 'fof-custom-footer.text',
+      label: app.translator.trans('huseyinfiliz-modern-footer.admin.settings.text'),
+      setting: 'huseyinfiliz-modern-footer.text',
       type: 'text',
     })
     .registerSetting({
-      label: app.translator.trans('fof-custom-footer.admin.settings.height'),
-      setting: 'fof-custom-footer.height',
+      label: app.translator.trans('huseyinfiliz-modern-footer.admin.settings.height'),
+      setting: 'huseyinfiliz-modern-footer.height',
       placeholder: '50',
       type: 'number',
       simple: 'simple',
     })
     .registerSetting({
-      label: app.translator.trans('fof-custom-footer.admin.settings.js'),
-      setting: 'fof-custom-footer.js',
+      label: app.translator.trans('huseyinfiliz-modern-footer.admin.settings.js'),
+      setting: 'huseyinfiliz-modern-footer.js',
       type: 'text',
     });
 });
