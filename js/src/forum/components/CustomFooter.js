@@ -1,7 +1,7 @@
 import app from 'flarum/forum/app';
 import Component from 'flarum/common/Component';
 
-export default class ModernFooter extends Component {
+export default class CustomFooter extends Component {
   oninit(vnode) {
     super.oninit(vnode);
     this.open = false;
