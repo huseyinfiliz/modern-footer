@@ -36,17 +36,17 @@
             "huseyinfiliz\\ModernFooter\\": "src/"
         }
     },
-"extra": {
-    "flarum-extension": {
-        "title": "Modern Footer",
-        "category": "feature",
-        "icon": {
-            "name": "fas fa-cogs",
-            "backgroundColor": "#3498db",
-            "color": "#fff"
+    "extra": {
+        "flarum-extension": {
+            "title": "Modern Footer",
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-cogs",
+                "backgroundColor": "#3498db",
+                "color": "#fff"
+            }
         }
-    }
-},
+    },
         "flagrow": {
             "discuss": "https://discuss.flarum.org/d/17774"
         },
