@@ -4,7 +4,7 @@ import ForumApplication from 'flarum/forum/ForumApplication';
 
 import CustomFooter from './components/CustomFooter';
 
-app.initializers.add('fof-custom-footer', () => {
+app.initializers.add('huseyinfiliz-modern-footer', () => {
   extend(ForumApplication.prototype, 'mount', () => {
     const footer = document.createElement('div');
 
