@@ -1,4 +1,4 @@
-name: FoF Custom Footer PHP
+name: Modern Footer PHP
 
 on: [workflow_dispatch, push, pull_request]
 
