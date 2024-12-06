@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace FoF\CustomFooter\Listeners;
+namespace huseyinfiliz\ModernFooter\Listeners;
 
 use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Settings\SettingsRepositoryInterface;
 
 class LoadSettingsFromDatabase
 {
-    protected $packagePrefix = 'fof-custom-footer.';
+    protected $packagePrefix = 'modern-footer.';
 
     protected $fieldsToGet = [
         'text',
