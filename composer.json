@@ -9,13 +9,13 @@
     "support": {
         "issues": "https://github.com/huseyinfiliz/modern-footer/issues",
         "source": "https://github.com/huseyinfiliz/modern-footer",
-        "forum": "https://discuss.flarum.org/d/17774"
+        "forum": "https://discuss.flarum.org/d/36061"
     },
     "homepage": "https://flarum.org",
     "funding": [
         {
             "type": "website",
-            "url": "https://flarum.org/"
+            "url": "https://github.com/huseyinfiliz"
         }
     ],
     "require": {
@@ -48,7 +48,7 @@
         }
     },
     "flagrow": {
-        "discuss": "https://discuss.flarum.org/d/17774"
+        "discuss": "https://discuss.flarum.org/d/36061"
     },
     "flarum-cli": {
         "modules": {
