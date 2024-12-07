@@ -1,27 +1,27 @@
-# Custom Footer by FriendsOfFlarum
+# Modern Footer by HuseyinFiliz
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/fof/custom-footer.svg)](https://packagist.org/packages/fof/custom-footer)
+![License](https://img.shields.io/badge/license-MIT-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/huseyinfiliz/modern-footer.svg)](https://packagist.org/packages/huseyinfiliz/modern-footer)
 
-A [Flarum](http://flarum.org) extension. Allows the Addition of a Custom Footer
+A [Flarum](http://flarum.org) extension. Allows the Addition of a Modern Footer. Modern Footer extension is built on top of the fof/custom-footer extension.
 
 ### Installation
 
 Install manually with composer:
 
 ```sh
-composer require fof/custom-footer:"*"
+composer require huseyinfiliz/modern-footer:"*"
 ```
 
 ### Updating
 
 ```sh
-composer update fof/custom-footer
+composer update huseyinfiliz/modern-footer
 php flarum cache:clear
 ```
 
 ### Links
 
-- [Packagist](https://packagist.org/packages/fof/custom-footer)
-- [GitHub](https://github.com/FriendsOfFlarum/custom-footer)
+- [Packagist](https://packagist.org/packages/huseyinfiliz/modern-footer)
+- [GitHub](https://github.com/huseyinfiliz/modern-footer)
 
-An extension by [FriendsOfFlarum](https://github.com/FriendsOfFlarum).
+An extension by [Huseyin Filiz](https://github.com/huseyinfiliz). Thanks to the FoF team!
