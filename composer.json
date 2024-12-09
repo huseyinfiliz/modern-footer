@@ -2,16 +2,20 @@
     "name": "huseyinfiliz/modern-footer",
     "description": "Allows the Addition of a Modern Footer",
     "keywords": [
-        "flarum"
+        "footer",
+        "modern",
+        "flarum",
+        "responsive",
+        "compatible"
     ],
     "type": "flarum-extension",
     "license": "MIT",
     "support": {
         "issues": "https://github.com/huseyinfiliz/modern-footer/issues",
         "source": "https://github.com/huseyinfiliz/modern-footer",
-        "forum": "https://discuss.flarum.org/d/36061"
+        "forum": "https://discuss.flarum.org/d/36603"
     },
-    "homepage": "https://flarum.org",
+    "homepage": "https://github.com/huseyinfiliz",
     "funding": [
         {
             "type": "website",
@@ -28,9 +32,6 @@
             "role": "Developer"
         }
     ],
-    "replace": {
-        "fof/custom-footer": "*"
-    },
     "autoload": {
         "psr-4": {
             "huseyinfiliz\\ModernFooter\\": "src/"
@@ -48,7 +49,7 @@
         }
     },
     "flagrow": {
-        "discuss": "https://discuss.flarum.org/d/36061"
+        "discuss": "https://discuss.flarum.org/d/36603"
     },
     "flarum-cli": {
         "modules": {
