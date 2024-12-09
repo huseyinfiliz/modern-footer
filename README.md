@@ -1,6 +1,6 @@
 # Modern Footer for Flarum
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/huseyinfiliz/modern-footer.svg)](https://packagist.org/packages/huseyinfiliz/modern-footer)
+![License](https://img.shields.io/badge/license-MIT-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/huseyinfiliz/modern-footer.svg)](https://packagist.org/packages/huseyinfiliz/modern-footer) [![Total Downloads](https://img.shields.io/packagist/dt/huseyinfiliz/modern-footer.svg)](https://packagist.org/packages/huseyinfiliz/modern-footer)
 
 A [Flarum](http://flarum.org) extension. Allows the Addition of a Modern Footer. Modern Footer extension is built on top of the fof/custom-footer extension.
 
