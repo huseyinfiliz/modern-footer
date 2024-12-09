@@ -9,10 +9,20 @@ export default class CustomFooter extends Component {
     const js = app.forum.attribute('modern-footer.js');
     if (js) {
       const sanitizedJS = js.trim();
-      if (!sanitizedJS.includes('<script>')) {
-        $('body').append(`<script>${sanitizedJS}</script>`);
+
+      const jsWithoutComments = sanitizedJS
+        .replace(/<!--[\s\S]*?-->/g, '') 
+        .replace(/\/\*[\s\S]*?\*\//g, '') 
+        .replace(/\/\/[^\n\r]*/g, '') 
+        .trim();
+
+      if (
+        jsWithoutComments.startsWith('<script') &&
+        jsWithoutComments.endsWith('</script>')
+      ) {
+        $('body').append(sanitizedJS);
       } else {
-        console.warn('Potentially harmful JavaScript was not executed.');
+        $('body').append(`<script>${jsWithoutComments}</script>`);
       }
     }
   }
@@ -33,26 +43,26 @@ export default class CustomFooter extends Component {
             </h3>
             <p>
               {app.forum.attribute('modern-footer.copyright') ||
-                `© ${currentYear}, All Rights Reserved`}
+                ``}
             </p>
             <button class="Button Button--primary">
               <span class="Button-label">
                 <a
                   href={app.forum.attribute('modern-footer.contact-link') || '#contact'}
                 >
-                  {app.forum.attribute('modern-footer.contact') || 'Contact'}
+                  {m.trust(app.forum.attribute('modern-footer.contact') || '<i class="fas fa-envelope"></i>')}
                 </a>
               </span>
             </button>
           </div>
 
           <div class="foo-mid">
-            <h3>{app.forum.attribute('modern-footer.title-2') || 'Links'}</h3>
+            <h3>{app.forum.attribute('modern-footer.title-2') || ''}</h3>
             <ul>
               {[1, 2, 3, 4].map((i) => {
                 const link = app.forum.attribute(`modern-footer.link-${i}`);
                 const text = app.forum.attribute(`modern-footer.text-${i}`);
-                const isExternalLink = link && !this.isInternalLink(link);
+                const isExternalLink = link && this.isExternalLink(link);
                 return link && text ? (
                   <li>
                     <a
@@ -68,12 +78,12 @@ export default class CustomFooter extends Component {
           </div>
 
           <div class="foo-mid">
-            <h3>{app.forum.attribute('modern-footer.title-3') || 'Links'}</h3>
+            <h3>{app.forum.attribute('modern-footer.title-3') || ''}</h3>
             <ul>
               {[5, 6, 7, 8].map((i) => {
                 const link = app.forum.attribute(`modern-footer.link-${i}`);
                 const text = app.forum.attribute(`modern-footer.text-${i}`);
-                const isExternalLink = link && !this.isInternalLink(link);
+                const isExternalLink = link && this.isExternalLink(link);
                 return link && text ? (
                   <li>
                     <a
@@ -90,7 +100,7 @@ export default class CustomFooter extends Component {
 
           <div class="foo-right">
             <h3>
-              {app.forum.attribute('modern-footer.title-4') || 'About'}
+              {app.forum.attribute('modern-footer.title-4') || ''}
             </h3>
             <p>
               {m.trust(
@@ -103,25 +113,19 @@ export default class CustomFooter extends Component {
     );
   }
 
-  isInternalLink(link) {
-    if (link.startsWith('#')) {
-      return true;
-    }
-
+  isExternalLink(link) {
     try {
       const url = new URL(link, window.location.origin);
-      const currentHost = this.getRootDomain(window.location.hostname);
-      const linkHost = this.getRootDomain(url.hostname);
+      const currentHost = this.normalizeHostname(window.location.hostname);
+      const linkHost = this.normalizeHostname(url.hostname);
 
-      return currentHost === linkHost;
+      return currentHost !== linkHost;
     } catch (e) {
       return false;
     }
   }
 
-  getRootDomain(hostname) {
-    const parts = hostname.split('.');
-    const domain = parts.slice(parts.length - 2).join('.');
-    return domain;
+  normalizeHostname(hostname) {
+    return hostname.replace(/^www\./, '');
   }
 }
