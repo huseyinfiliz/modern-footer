@@ -23,6 +23,6 @@ php flarum cache:clear
 
 - [Packagist](https://packagist.org/packages/huseyinfiliz/modern-footer)
 - [GitHub](https://github.com/huseyinfiliz/modern-footer)
-- [Discuss] (https://discuss.flarum.org/d/36603)
+- [Discuss](https://discuss.flarum.org/d/36603)
 
 An extension by [Huseyin Filiz](https://github.com/huseyinfiliz). Thanks to the FoF team!
