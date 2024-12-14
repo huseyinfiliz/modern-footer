@@ -20,38 +20,45 @@ class LoadSettingsFromDatabase
 
     protected $fieldsToGet = [
         'title-1',
+        'title-2',
+        'title-3',
+        'title-4',
+		'title-5',
+		'title-fa-2',
+		'title-fa-3',
+		'title-fa-4',
+		'title-fa-5',
         'copyright',
         'contact',
         'contact-link',
-        'title-2',
-        'text-1',
-        'link-1',
-        'text-2',
-        'link-2',
-        'text-3',
-        'link-3',
-        'text-4',
-        'link-4',
-        'title-3',
-        'text-5',
-        'link-5',
-        'text-6',
-        'link-6',
-        'text-7',
-        'link-7',
-        'text-8',
-        'link-8',
-        'title-4',
+		'contact-2',
+        'contact-link-2',
+		'contact-3',
+        'contact-link-3',
+		'contact-4',
+        'contact-link-4',
         'right-text',
+        'info-enabled',
+        'links-1-enabled',
+        'links-2-enabled',
+        'links-3-enabled',
+        'links-4-enabled',
+        'bottom-enabled',
         'js',
+        'mobile-tab',
     ];
-
 
     protected $settings;
 
     public function __construct(SettingsRepositoryInterface $settings)
     {
         $this->settings = $settings;
+
+        // Adding text and link fields dynamically
+        for ($i = 1; $i <= 24; $i++) {
+            $this->fieldsToGet[] = "text-$i";
+            $this->fieldsToGet[] = "link-$i";
+        }
     }
 
     public function __invoke(ForumSerializer $serializer, $model, array $attributes): array
