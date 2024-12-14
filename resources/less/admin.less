@@ -1,0 +1,106 @@
+.ExtensionPage-body {
+  padding-top: 20px;
+
+  .SettingsPage {
+    background: @control-bg;
+    padding: 20px;
+    margin: 20px;
+    border-radius: @border-radius;
+    box-shadow: 0 2px 4px @shadow-color;
+
+
+    .SettingsPage-menu {
+      background: #4d698e;
+      border-radius: @border-radius;
+      padding: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px @shadow-color;
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: ruby;
+        gap: 10px;
+
+        li {
+          button {
+            background: @primary-color;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: @border-radius;
+            cursor: pointer;
+            transition: background 0.3s ease;
+
+            &:hover {
+              background: darken(@primary-color, 10%);
+            }
+
+            &.active {
+              background: lighten(@primary-color, 10%);
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+
+    .SettingsPage-content {
+      background: @body-bg;
+      border-radius: @border-radius;
+      padding: 20px;
+      box-shadow: 0 1px 3px @shadow-color;
+
+      fieldset {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid @muted-color;
+        border-radius: @border-radius;
+
+        legend {
+          font-size: 16px;
+          font-weight: bold;
+          color: @primary-color;
+          padding: 0 5px;
+        }
+
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+
+          li {
+            margin-bottom: 10px;
+
+            .FormControl {
+              max-width: 400px;
+              padding: 8px;
+              border: 1px solid @muted-color;
+              border-radius: @border-radius;
+            }
+          }
+        }
+      }
+
+      .Button--primary {
+        display: inline-block;
+        padding: 10px 20px;
+        background: @primary-color;
+        color: #ffffff;
+        border-radius: @border-radius;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s ease;
+
+        &:hover {
+          background: darken(@primary-color, 10%);
+        }
+
+        .Button-label {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
