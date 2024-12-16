@@ -35,6 +35,7 @@ To remove simply run `composer remove huseyinfiliz/modern-footer`
 ### Mobile Support
 
 If you are using the [Mobile Tab](https://discuss.flarum.org/d/28216-mobile-tab) extension, you can check this in the settings.
+
 ![](https://i.ibb.co/74F3Tb0/Ek-A-klama-2024-12-16-095108.png)
 
 ### Credits
