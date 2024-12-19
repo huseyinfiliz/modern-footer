@@ -1,30 +1,32 @@
 huseyinfiliz-modern-footer:
   admin:
     settings:
-      title-1: Forum Title
-      title-1-help: You can add your logo with the <img> tag or just write the name of the forum.
-      copyright: Copyright Text
-      contact: Contact Button Text
-      contact-link: Contact Link
-      title-2: First Links Title
-      text-1: Link 1 - Text
-      link-1: Link 1 - URL
-      text-2: Link 2 - Text
-      link-2: Link 2 - URL
-      text-3: Link 3 - Text
-      link-3: Link 3 - URL
-      text-4: Link 4 - Text
-      link-4: Link 4 - URL
-      title-3: Last Links Title
-      text-5: Link 1 - Text
-      link-5: Link 1 - URL
-      text-6: Link 2 - Text
-      link-6: Link 2 - URL
-      text-7: Link 3 - Text
-      link-7: Link 3 - URL
-      text-8: Link 4 - Text
-      link-8: Link 4 - URL
-      title-4: About Us Title
-      right-text: About Us Text
-      js: Custom JS
-      js-help: Example Google Analytics Code
+      general: "General"
+      about: "About"
+      blocks: "Blocks"
+      block: "Block"
+      bottom: "Bottom"
+      custom_js: "Custom JS"
+      custom_html: "Custom HTML Code"
+      manage_footer_sections: "Manage Footer Sections"
+      mobile_tab_height: "Mobile Tab Height"
+      mobile_tab_height_help: "If the Mobile Tab extension is installed, you can use as the value: var(--mobile-tab-height)"
+      display_mode: "Footer Display Mode"
+      all_pages: "Show on all pages"
+      hide_everywhere: "Hide on all pages"
+      hide_on_discussions: "Hide on discussions"
+      hide_except_index: "Hide on all pages except the index page"
+      custom: "Custom"
+      social_media_button: "Social Media Button"
+      font_awesome_icon: "Font Awesome Icon"
+      social_link: "Social Link"
+      forum_logo: "Forum Logo"
+      forum_logo_help: "Add the URL for the forum logo. If a valid URL is provided, the logo will be displayed. Alternatively, you can add a code such as to make it behave like other block titles:"
+      about_us: "About Us"
+      about_us_help: "Text Area: This field does not support HTML formatting. To create a new line, simply press the Enter key."
+      title: "Title"
+      link: "Link"
+      text: "Text"
+      bottom_section: "Bottom Section"
+      bottom_help: "Example: © 2025, All Rights Reserved"
+      custom_js_code: "Custom JavaScript Code"
