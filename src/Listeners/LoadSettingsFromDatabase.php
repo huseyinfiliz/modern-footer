@@ -1,15 +1,6 @@
 <?php
 
-/*
- * This file is part of fof/secure-https.
- *
- * Copyright (c) FriendsOfFlarum.
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
-namespace huseyinfiliz\ModernFooter\Listeners;
+namespace HuseyinFiliz\ModernFooter\Listeners;
 
 use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Settings\SettingsRepositoryInterface;
@@ -23,19 +14,19 @@ class LoadSettingsFromDatabase
         'title-2',
         'title-3',
         'title-4',
-		'title-5',
-		'title-fa-2',
-		'title-fa-3',
-		'title-fa-4',
-		'title-fa-5',
+        'title-5',
+        'title-fa-2',
+        'title-fa-3',
+        'title-fa-4',
+        'title-fa-5',
         'copyright',
         'contact',
         'contact-link',
-		'contact-2',
+        'contact-2',
         'contact-link-2',
-		'contact-3',
+        'contact-3',
         'contact-link-3',
-		'contact-4',
+        'contact-4',
         'contact-link-4',
         'right-text',
         'info-enabled',
@@ -45,7 +36,9 @@ class LoadSettingsFromDatabase
         'links-4-enabled',
         'bottom-enabled',
         'js',
+        'html',
         'mobile-tab',
+        'display-mode',
     ];
 
     protected $settings;
@@ -64,8 +57,12 @@ class LoadSettingsFromDatabase
     public function __invoke(ForumSerializer $serializer, $model, array $attributes): array
     {
         foreach ($this->fieldsToGet as $field) {
-            $key = $this->packagePrefix.$field;
+            $key = $this->packagePrefix . $field;
             $attributes[$key] = $this->settings->get($key);
+
+            if ($field === 'display-mode') {
+                $attributes[$key] = (int) $attributes[$key];
+            }
         }
 
         return $attributes;
