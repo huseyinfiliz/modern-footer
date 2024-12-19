@@ -1,20 +1,18 @@
-.ExtensionPage-body {
-  padding-top: 20px;
-
+.huseyinfiliz-modern-footer-Page .ExtensionPage-body {
+  .ExtensionPage-permissions-header {
+      margin: 0;
+  }
+    .ExtensionPage-permissions>.container {
+	background: var(--control-bg);
+    }
   .SettingsPage {
     background: @control-bg;
     padding: 20px;
-    margin: 20px;
-    border-radius: @border-radius;
-    box-shadow: 0 2px 4px @shadow-color;
-
 
     .SettingsPage-menu {
       background: @primary-color;
       border-radius: @border-radius;
       padding: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 1px 3px @shadow-color;
 
       ul {
         list-style: none;
@@ -49,8 +47,7 @@
     .SettingsPage-content {
       background: @body-bg;
       border-radius: @border-radius;
-      padding: 20px;
-      box-shadow: 0 1px 3px @shadow-color;
+      padding: 15px;
 
       fieldset {
         margin-bottom: 20px;
@@ -82,24 +79,16 @@
           }
         }
       }
+    }
+  }
+}
 
-      .Button--primary {
-        display: inline-block;
-        padding: 10px 20px;
-        background: @primary-color;
-        color: #ffffff;
-        border-radius: @border-radius;
-        border: none;
-        cursor: pointer;
-        transition: background 0.3s ease;
-
-        &:hover {
-          background: darken(@primary-color, 10%);
-        }
-
-        .Button-label {
-          font-weight: bold;
-        }
+@media (max-width: 768px) {
+  .huseyinfiliz-modern-footer-Page .ExtensionPage-body {
+    .SettingsPage {
+      .SettingsPage-menu {
+        text-align: center;
+        text-align: -webkit-center;
       }
     }
   }
