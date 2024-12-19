@@ -1,5 +1,5 @@
 # Modern Footer Extension for Flarum
-![](https://i.ibb.co/Y03VdDn/modern-footer-v7.png)
+![](https://i.ibb.co/7kX0pgM/modern-footer-v7.png)
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/huseyinfiliz/modern-footer.svg)](https://packagist.org/packages/huseyinfiliz/modern-footer) [![Total Downloads](https://img.shields.io/packagist/dt/huseyinfiliz/modern-footer.svg)](https://packagist.org/packages/huseyinfiliz/modern-footer)
 
