@@ -23,41 +23,49 @@ export default class SecondLinksPage extends Component {
       this.values[section.titleKey] = Stream(settings[section.titleKey] || '');
       this.values[section.urlKey] = Stream(settings[section.urlKey] || '');
     });
+
+    this.translationPrefix = 'huseyinfiliz-modern-footer.admin.settings.';
   }
 
   view() {
+    const t = (key) => app.translator.trans(this.translationPrefix + key);
     return (
       <form onsubmit={this.onsubmit.bind(this)}>
-        {this.sections.map((section, index) => {
-          return FieldSet.component(
-            { label: `Link #${index + 1}` },
-            [
+        <div className="container">
+          {this.sections.map((section, index) => {
+            return FieldSet.component({ label: `${t('link')} #${index + 1}` }, [
               <div className="LinkSection">
-                <div>
-                  <label>Link Text Field</label>
+                <div className="Form-group">
+                  <label>{t('text')}</label>
                   <input
                     className="FormControl"
                     bidi={this.values[section.titleKey]}
-                    placeholder="Enter text"
+                    placeholder={t('text')}
                   />
                 </div>
-                <br />
-                <div>
-                  <label>URL Field</label>
+                <div className="Form-group">
+                  <label>{t('link')}</label>
                   <input
                     className="FormControl"
                     bidi={this.values[section.urlKey]}
-                    placeholder="Enter URL"
+                    placeholder={t('link')}
                   />
                 </div>
               </div>,
-            ]
-          );
-        })}
+            ]);
+          })}
 
-        <Button type="submit" className="Button Button--primary" loading={this.saving}>
-          Save
-        </Button>
+          <div className="Form-group">
+            {Button.component(
+              {
+                type: 'submit',
+                className: 'Button Button--primary',
+                loading: this.saving,
+              },
+              app.translator.trans('core.admin.settings.submit_button')
+            )}
+          </div>
+        </div>
       </form>
     );
   }
@@ -77,11 +85,9 @@ export default class SecondLinksPage extends Component {
 
     saveSettings(settings)
       .then(() => {
-        app.alerts.show({ type: 'success' }, 'Settings saved successfully!');
+        app.alerts.show({ type: 'success' }, app.translator.trans('core.admin.settings.saved_message'));
       })
-      .catch(() => {
-        app.alerts.show({ type: 'error' }, 'There was an error saving the settings.');
-      })
+      .catch(() => {})
       .finally(() => {
         this.saving = false;
         m.redraw();
