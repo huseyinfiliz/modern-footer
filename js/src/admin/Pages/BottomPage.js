@@ -10,35 +10,56 @@ export default class BottomPage extends Component {
 
     this.saving = false;
 
-    this.fields = [
-      'modern-footer.copyright',
-    ];
+    this.fields = ['modern-footer.copyright', 'modern-footer.html'];
     this.values = {};
 
     const settings = app.data.settings;
     this.fields.forEach((key) => (this.values[key] = Stream(settings[key] || '')));
+
+    this.translationPrefix = 'huseyinfiliz-modern-footer.admin.settings.';
   }
 
   view() {
+    const t = (key) => app.translator.trans(this.translationPrefix + key);
+
     return (
       <form onsubmit={this.onsubmit.bind(this)}>
-        {FieldSet.component({ label: 'Bottom Section' }, [
-          <div>
-            <label>Bottom Text</label>
-            <input
-              className="FormControl"
-              bidi={this.values['modern-footer.copyright']}
-              placeholder="Enter bottom section text"
-            />
-            <p className="helpText">
-              Example: {`© 2024, All Rights Reserved`}
-            </p>
-          </div>,
-        ])}
+        <div className="container">
+          {/* Custom HTML FieldSet'i */}
+          {FieldSet.component({ label: t('custom_html') }, [
+            <div className="Form-group">
+              <textarea
+                className="FormControl"
+                rows="10"
+                bidi={this.values['modern-footer.html']}
+                placeholder={t('custom_html')}
+              />
+            </div>
+          ])}
 
-        <Button type="submit" className="Button Button--primary" loading={this.saving}>
-          Save
-        </Button>
+          {/* Bottom Section FieldSet'i */}
+          {FieldSet.component({ label: t('bottom_section') }, [
+            <div className="Form-group">
+              <label>{t('text')}</label>
+              <input
+                className="FormControl"
+                bidi={this.values['modern-footer.copyright']}
+              />
+              <p className="helpText">{t('bottom_help')}</p>
+            </div>
+          ])}
+
+          <div className="Form-group">
+            {Button.component(
+              {
+                type: 'submit',
+                className: 'Button Button--primary',
+                loading: this.saving,
+              },
+              app.translator.trans('core.admin.settings.submit_button')
+            )}
+          </div>
+        </div>
       </form>
     );
   }
@@ -57,11 +78,9 @@ export default class BottomPage extends Component {
 
     saveSettings(settings)
       .then(() => {
-        app.alerts.show({ type: 'success' }, 'Settings saved successfully!');
+        app.alerts.show({ type: 'success' }, app.translator.trans('core.admin.settings.saved_message'));
       })
-      .catch(() => {
-        app.alerts.show({ type: 'error' }, 'There was an error saving the settings.');
-      })
+      .catch(() => {})
       .finally(() => {
         this.saving = false;
         m.redraw();
