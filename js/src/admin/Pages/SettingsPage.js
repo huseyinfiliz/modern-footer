@@ -1,111 +1,121 @@
 import app from 'flarum/admin/app';
 import ExtensionPage from 'flarum/admin/components/ExtensionPage';
-import Button from 'flarum/components/Button';
-import GeneralSettingsPage from './/GeneralSettingsPage';
-import InformationPage from './/InformationPage';
-import BlockTitlesPage from './/BlockTitlesPage';
-import FirstLinksPage from './/FirstLinksPage';
-import SecondLinksPage from './/SecondLinksPage';
-import ThirdLinksPage from './/ThirdLinksPage';
-import FourthLinksPage from './/FourthLinksPage';
-import BottomPage from './/BottomPage';
-import CustomJSPage from './/CustomJSPage';
+import GeneralSettingsPage from './GeneralSettingsPage';
+import InformationPage from './InformationPage';
+import BlockTitlesPage from './BlockTitlesPage';
+import FirstLinksPage from './FirstLinksPage';
+import SecondLinksPage from './SecondLinksPage';
+import ThirdLinksPage from './ThirdLinksPage';
+import FourthLinksPage from './FourthLinksPage';
+import BottomPage from './BottomPage';
+import CustomJSPage from './CustomJSPage';
+import Stream from 'flarum/utils/Stream';
 
 export default class SettingsPage extends ExtensionPage {
+  oninit(vnode) {
+    super.oninit(vnode);
+    this.settings = app.data.settings;
+    this.settingsStream = Stream(this.settings);
+  }
+
   content() {
     const page = m.route.param('page') || 'general';
+
+    const translationPrefix = 'huseyinfiliz-modern-footer.admin.settings.';
+
+    const t = (key) => app.translator.trans(translationPrefix + key);
+
+    const generateBlockItems = () => {
+      const blocks = [];
+      const usedTitles = {};
+
+      ['2', '3', '4', '5'].forEach((blockNumber) => {
+        const titleKey = `modern-footer.title-${blockNumber}`;
+        const iconKey = `modern-footer.title-fa-${blockNumber}`;
+
+        let blockTitle = this.settingsStream()[titleKey] || t('block') + ` #${blockNumber}`;
+        const blockIcon = this.settingsStream()[iconKey] || 'fas fa-link';
+
+        if (usedTitles[blockTitle]) {
+          blockTitle += ` #${blockNumber}`;
+        }
+        usedTitles[blockTitle] = true;
+
+        const linkPageComponents = {
+          2: FirstLinksPage,
+          3: SecondLinksPage,
+          4: ThirdLinksPage,
+          5: FourthLinksPage,
+        };
+
+        blocks.push({
+          key: `links-${blockNumber - 1}`,
+          icon: blockIcon,
+          label: blockTitle,
+          component: linkPageComponents[blockNumber],
+        });
+      });
+
+      return blocks;
+    };
+
+    // Define menu items
+    const menuItems = [
+      { key: 'general', icon: 'fas fa-cogs', label: t('general'), component: GeneralSettingsPage },
+      { key: 'titles', icon: 'fas fa-th-large', label: t('blocks'), component: BlockTitlesPage },
+      { key: 'info', icon: 'fas fa-info-circle', label: t('about'), component: InformationPage },
+      ...generateBlockItems(),
+      { key: 'bottom', icon: 'fas fa-arrow-down', label: t('bottom'), component: BottomPage },
+      { key: 'js', icon: 'fas fa-code', label: t('custom_js'), component: CustomJSPage },
+    ];
+
+    // Render menu items
+    const renderMenuItems = () => (
+      <ul className="SettingsPage-menu-list">
+        {menuItems.map(({ key, icon, label }) => (
+          <li key={key}>
+            <button
+              className={`SettingsPage-menu-item ${page === key ? 'active' : ''}`}
+              onclick={() => {
+                m.route.set(app.route('extension', { id: 'huseyinfiliz-modern-footer', page: key }));
+              }}
+            >
+              <i className={icon} />{' '}
+              {label}
+            </button>
+          </li>
+        ))}
+      </ul>
+    );
+
+    // Render the active page component
+    const renderActivePage = () => {
+      const activeItem = menuItems.find((item) => item.key === page);
+      // Sadece BlockTitlesPage'e settingsStream'i geçiriyoruz
+      return activeItem
+        ? activeItem.key === 'titles'
+          ? m(activeItem.component, { settingsStream: this.settingsStream })
+          : m(activeItem.component)
+        : m(GeneralSettingsPage);
+    };
 
     return (
       <div className="SettingsPage">
         <div className="SettingsPage-menu">
-          <ul>
-            <li>
-              <button
-                className={page === 'general' ? 'active' : ''}
-                onclick={() => m.route.set(app.route('extension', { id: 'huseyinfiliz-modern-footer', page: 'general' }))}
-              >
-                <i className="fas fa-cogs"></i> General
-              </button>
-            </li>
-            <li>
-              <button
-                className={page === 'info' ? 'active' : ''}
-                onclick={() => m.route.set(app.route('extension', { id: 'huseyinfiliz-modern-footer', page: 'info' }))}
-              >
-                <i className="fas fa-info-circle"></i> About
-              </button>
-            </li>
-            <li>
-              <button
-                className={page === 'titles' ? 'active' : ''}
-                onclick={() => m.route.set(app.route('extension', { id: 'huseyinfiliz-modern-footer', page: 'titles' }))}
-              >
-                <i className="fas fa-th-large"></i> Blocks
-              </button>
-            </li>
-            <li>
-              <button
-                className={page === 'links-1' ? 'active' : ''}
-                onclick={() => m.route.set(app.route('extension', { id: 'huseyinfiliz-modern-footer', page: 'links-1' }))}
-              >
-                <i className="fas fa-link"></i> Block #2
-              </button>
-            </li>
-            <li>
-              <button
-                className={page === 'links-2' ? 'active' : ''}
-                onclick={() => m.route.set(app.route('extension', { id: 'huseyinfiliz-modern-footer', page: 'links-2' }))}
-              >
-                <i className="fas fa-link"></i> Block #3
-              </button>
-            </li>
-            <li>
-              <button
-                className={page === 'links-3' ? 'active' : ''}
-                onclick={() => m.route.set(app.route('extension', { id: 'huseyinfiliz-modern-footer', page: 'links-3' }))}
-              >
-                <i className="fas fa-link"></i> Block #4
-              </button>
-            </li>
-            <li>
-              <button
-                className={page === 'links-4' ? 'active' : ''}
-                onclick={() => m.route.set(app.route('extension', { id: 'huseyinfiliz-modern-footer', page: 'links-4' }))}
-              >
-                <i className="fas fa-link"></i> Block #5
-              </button>
-            </li>
-            <li>
-              <button
-                className={page === 'bottom' ? 'active' : ''}
-                onclick={() => m.route.set(app.route('extension', { id: 'huseyinfiliz-modern-footer', page: 'bottom' }))}
-              >
-                <i className="fas fa-arrow-down"></i> Bottom
-              </button>
-            </li>
-            <li>
-              <button
-                className={page === 'js' ? 'active' : ''}
-                onclick={() => m.route.set(app.route('extension', { id: 'huseyinfiliz-modern-footer', page: 'js' }))}
-              >
-                <i className="fas fa-code"></i> Custom JS
-              </button>
-            </li>
-          </ul>
+          {renderMenuItems()}
         </div>
-
         <div className="SettingsPage-content">
-          {page === 'general' && <GeneralSettingsPage />}
-          {page === 'info' && <InformationPage />}
-          {page === 'titles' && <BlockTitlesPage />}
-          {page === 'links-1' && <FirstLinksPage />}
-          {page === 'links-2' && <SecondLinksPage />}
-          {page === 'links-3' && <ThirdLinksPage />}
-          {page === 'links-4' && <FourthLinksPage />}
-          {page === 'bottom' && <BottomPage />}
-          {page === 'js' && <CustomJSPage />}
+          {renderActivePage()}
         </div>
       </div>
     );
+  }
+
+  // Ayarları yeniden yükleyen fonksiyon
+  refreshSettings() {
+    app.store.find('settings').then((settings) => {
+      this.settingsStream(settings); // Ana Stream'i güncelliyoruz
+      m.redraw(); // Sayfayı yeniden çiziyoruz
+    });
   }
 }
