@@ -30,6 +30,7 @@ footer a {
 
 footer a:hover {
   color: var(--primary-color);
+  font-weight: bold;
 }
 
 footer p {
@@ -47,6 +48,7 @@ footer .row {
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
+  padding: 15px 0;
   text-align: center;
 }
 
@@ -99,7 +101,7 @@ footer .Social:focus {
   background-color: var(--muted-color-light);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 767.98px) {
   .foo-left {
     flex: 0 0 27%;
     max-width: 27%;
@@ -107,6 +109,12 @@ footer .Social:focus {
   .foo-mid {
     flex: 0 0 14.6%;
     max-width: 14.6%;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .App-content {
+    padding-bottom: 0;
   }
 }
 
