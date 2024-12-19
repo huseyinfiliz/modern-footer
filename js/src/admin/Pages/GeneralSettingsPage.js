@@ -1,91 +1,151 @@
 import Component from 'flarum/common/Component';
-import saveSettings from 'flarum/utils/saveSettings';
+import FieldSet from 'flarum/components/FieldSet';
 import Stream from 'flarum/utils/Stream';
+import Button from 'flarum/components/Button';
+import saveSettings from 'flarum/utils/saveSettings';
 
 export default class GeneralSettingsPage extends Component {
   oninit(vnode) {
     super.oninit(vnode);
 
-    this.saving = false;
+    this.translationPrefix = 'huseyinfiliz-modern-footer.admin.settings.';
 
     this.fields = [
-      { key: 'modern-footer.info-enabled', label: 'Enable About Us Section' },
-      { key: 'modern-footer.links-1-enabled', label: 'Enable Links 1 Section' },
-      { key: 'modern-footer.links-2-enabled', label: 'Enable Links 2 Section' },
-      { key: 'modern-footer.links-3-enabled', label: 'Enable Links 3 Section' },
-      { key: 'modern-footer.links-4-enabled', label: 'Enable Links 4 Section' },
-      { key: 'modern-footer.bottom-enabled', label: 'Enable Footer Bottom Section' },
-      { key: 'modern-footer.mobile-tab', label: 'Mobile Tab Height' },
+      { key: 'modern-footer.info-enabled', translationKey: 'about' },
+      { key: 'modern-footer.links-1-enabled', translationKey: 'block', blockNumber: 2 },
+      { key: 'modern-footer.links-2-enabled', translationKey: 'block', blockNumber: 3 },
+      { key: 'modern-footer.links-3-enabled', translationKey: 'block', blockNumber: 4 },
+      { key: 'modern-footer.links-4-enabled', translationKey: 'block', blockNumber: 5 },
+      { key: 'modern-footer.bottom-enabled', translationKey: 'bottom_section' },
+      { key: 'modern-footer.mobile-tab', translationKey: 'mobile_tab_height' },
+      { key: 'modern-footer.display-mode', translationKey: 'display_mode' },
     ];
 
     this.values = {};
+    // usedTitles'ı blockNumber ile indekslemek için objeye çeviriyoruz
+    this.usedTitles = {};
 
-    const settings = app.data.settings;
-    this.fields.forEach(({ key }) => {
-      this.values[key] = Stream(settings[key] || (key.includes('enabled') ? '1' : ''));
+    this.fields.forEach(({ key, blockNumber }) => {
+      if (blockNumber) {
+        const titleKey = `modern-footer.title-${blockNumber}`;
+        const blockTitle = app.data.settings[titleKey];
+        const t = (key) => app.translator.trans(this.translationPrefix + key);
+
+        // Varsayılan değeri belirliyoruz
+        let uniqueBlockTitle = `${t('block')} #${blockNumber}`;
+
+        // Eğer app.data.settings'de bu blockNumber için bir değer varsa onu kullanıyoruz
+        if (blockTitle !== undefined) {
+          uniqueBlockTitle = blockTitle;
+        }
+
+        // Bu blockNumber'ın title'ının kullanıldığını işaretliyoruz
+        this.usedTitles[blockNumber] = true;
+
+        // app.data.settings'e kaydediyoruz
+        app.data.settings[titleKey] = uniqueBlockTitle;
+      }
+
+      this.values[key] = Stream(
+        app.data.settings[key] || (key.includes('enabled') ? '1' : key === 'modern-footer.display-mode' ? '0' : '')
+      );
+
+      this.values[key].map((value) => {
+        app.data.settings[key] = value;
+      });
     });
+
+    this.saving = false;
   }
 
   view() {
+    const t = (key) => app.translator.trans(this.translationPrefix + key);
+
     return (
       <div className="GeneralSettings">
-        <h3>Manage Footer Sections</h3>
-        <form onsubmit={this.onsubmit.bind(this)}>
-          {this.fields.map(({ key, label }) => (
-            <div className="Form-group">
-              {key.includes('enabled') ? (
+        {/* Display Mode ayarı ilk sıraya taşındı */}
+        <FieldSet label={t('display_mode')}>
+          <div className="Form-group">
+            <select
+              className="FormControl"
+              value={this.values['modern-footer.display-mode']()}
+              onchange={(e) => this.values['modern-footer.display-mode'](e.target.value)}
+              disabled={this.values['modern-footer.display-mode']() === '4'}
+            >
+              <option value="0">{t('all_pages')}</option>
+              <option value="1">{t('hide_everywhere')}</option>
+              <option value="2">{t('hide_on_discussions')}</option>
+              <option value="3">{t('hide_except_index')}</option>
+              <option value="4" disabled>
+                {t('custom')}
+              </option>
+            </select>
+          </div>
+        </FieldSet>
+
+        <FieldSet label={t('manage_footer_sections')}>
+          {this.fields
+            .filter(({ key }) => key.includes('-enabled'))
+            .map(({ key, translationKey, blockNumber }) => (
+              <div className="Form-group" key={key}>
                 <label className={`Checkbox ${this.values[key]() === '1' ? 'on' : 'off'} Checkbox--switch`}>
                   <input
                     type="checkbox"
-                    checked={this.values[key]() === '1'} // '1' kontrolü yapılmalı
-                    onchange={(e) => this.values[key](e.target.checked ? '1' : '0')} // '1' veya '0' olarak güncelleniyor
+                    checked={this.values[key]() === '1'}
+                    onchange={(e) => this.values[key](e.target.checked ? '1' : '0')}
                   />
                   <div className="Checkbox-display" aria-hidden="true"></div>
-                  {label}
+                  {/* Blok başlıklarını doğrudan app.data.settings'den alıyoruz */}
+                  {blockNumber
+                    ? app.data.settings[`modern-footer.title-${blockNumber}`] || `${t('block')} #${blockNumber}`
+                    : t(translationKey)}
                 </label>
-              ) : (
-                <div>
-                  <label>{label}</label>
-                  <input
-                    className="FormControl"
-                    type="text"
-                    bidi={this.values[key]}
-                    placeholder="Enter value (px or mobile-tab-height)"
-                  />
-                  {key === 'modern-footer.mobile-tab' && (
-                    <p className="helpText">
-                      If the <a href="https://discuss.flarum.org/d/28216-mobile-tab" target="_blank">Mobile Tab</a> extension is installed, you can use <code>var(--mobile-tab-height)</code> as the value.
-                    </p>
-                  )}
-                </div>
-              )}
-            </div>
-          ))}
-          <button type="submit" className="Button Button--primary" disabled={this.saving}>
-            Save Changes
-          </button>
-        </form>
+              </div>
+            ))}
+        </FieldSet>
+
+        <FieldSet label={t('mobile_tab_height')}>
+          <div className="Form-group">
+            <input
+              className="FormControl"
+              type="text"
+              bidi={this.values['modern-footer.mobile-tab']}
+              placeholder="var(--mobile-tab-height) / 54px"
+            />
+            <p className="helpText">{t('mobile_tab_height_help')}</p>
+          </div>
+        </FieldSet>
+
+        <div className="Form-group">
+          {Button.component(
+            {
+              className: 'Button Button--primary',
+              type: 'button',
+              onclick: this.confirm.bind(this),
+              loading: this.saving,
+            },
+            app.translator.trans('core.admin.settings.submit_button')
+          )}
+        </div>
       </div>
     );
   }
 
-  onsubmit(e) {
-    e.preventDefault();
-
-    if (this.saving) return;
-
-    this.saving = true;
-
-    const settings = {};
+  confirm() {
+    const settingsToSave = {};
     this.fields.forEach(({ key }) => {
-      settings[key] = this.values[key]() || '0'; // '0' varsayılan değer
+      settingsToSave[key] = this.values[key]();
     });
 
-    saveSettings(settings)
-      .then(() => app.alerts.show({ type: 'success' }, 'Settings saved successfully.'))
+    this.saving = true;
+    saveSettings(settingsToSave)
+      .then(() => {
+        app.alerts.show({ type: 'success' }, app.translator.trans('core.admin.settings.saved_message'));
+      })
+      .catch(() => {})
       .finally(() => {
         this.saving = false;
-        m.redraw(); // Sayfa yeniden render ediliyor
+        m.redraw();
       });
   }
 }
