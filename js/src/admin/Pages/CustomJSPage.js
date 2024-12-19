@@ -4,56 +4,30 @@ import Button from 'flarum/components/Button';
 import saveSettings from 'flarum/utils/saveSettings';
 import Stream from 'flarum/utils/Stream';
 
-export default class FirstLinksPage extends Component {
+export default class CustomJSPage extends Component {
   oninit(vnode) {
     super.oninit(vnode);
 
     this.saving = false;
-
-    // 6 bağlantı bölümü için alanlar oluştur
-    this.sections = Array.from({ length: 6 }, (_, i) => ({
-      titleKey: `modern-footer.text-${i + 1}`,
-      urlKey: `modern-footer.link-${i + 1}`,
-    }));
-
-    this.values = {};
-
-    const settings = app.data.settings;
-    this.sections.forEach((section) => {
-      this.values[section.titleKey] = Stream(settings[section.titleKey] || '');
-      this.values[section.urlKey] = Stream(settings[section.urlKey] || '');
-    });
-
+    this.jsSetting = Stream(app.data.settings['modern-footer.js'] || '');
     this.translationPrefix = 'huseyinfiliz-modern-footer.admin.settings.';
   }
 
   view() {
     const t = (key) => app.translator.trans(this.translationPrefix + key);
+
     return (
       <form onsubmit={this.onsubmit.bind(this)}>
         <div className="container">
-          {this.sections.map((section, index) => {
-            return FieldSet.component({ label: `${t('link')} #${index + 1}` }, [
-              <div className="LinkSection">
-                <div className="Form-group">
-                  <label>{t('text')}</label>
-                  <input
-                    className="FormControl"
-                    bidi={this.values[section.titleKey]}
-                    placeholder={t('text')}
-                  />
-                </div>
-                <div className="Form-group">
-                  <label>{t('link')}</label>
-                  <input
-                    className="FormControl"
-                    bidi={this.values[section.urlKey]}
-                    placeholder={t('link')}
-                  />
-                </div>
-              </div>,
-            ]);
-          })}
+          {FieldSet.component({ label: t('custom_js_code') }, [
+            <div className="Form-group">
+              <textarea
+                className="FormControl"
+                bidi={this.jsSetting}
+                rows="10"
+              />
+            </div>,
+          ])}
 
           <div className="Form-group">
             {Button.component(
@@ -77,13 +51,7 @@ export default class FirstLinksPage extends Component {
 
     this.saving = true;
 
-    const settings = {};
-    this.sections.forEach((section) => {
-      settings[section.titleKey] = this.values[section.titleKey]();
-      settings[section.urlKey] = this.values[section.urlKey]();
-    });
-
-    saveSettings(settings)
+    saveSettings({ 'modern-footer.js': this.jsSetting() })
       .then(() => {
         app.alerts.show({ type: 'success' }, app.translator.trans('core.admin.settings.saved_message'));
       })
