@@ -17,17 +17,18 @@ export default class SocialButtons extends Component {
         const link = field.link;
 
         return (
-          <button class="Button Button Social" key={link}>
-            <span class="Button-label">
-              <a href={link} target={this.isExternalLink(link) ? '_blank' : undefined}>
+          <a href={link} target={this.isExternalLink(link) ? '_blank' : undefined} key={link}>
+            <button class="Button Button Social">
+              <span class="Button-label">
                 <i class={icon}></i>
-              </a>
-            </span>
-          </button>
+              </span>
+            </button>
+          </a>
         );
       });
   }
-    isExternalLink(link) {
+
+  isExternalLink(link) {
     try {
       const url = new URL(link, window.location.origin);
       return this.normalizeHostname(window.location.hostname) !== this.normalizeHostname(url.hostname);
