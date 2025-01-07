@@ -1,123 +1,113 @@
-footer {
-  background-color: var(--button-bg);
-  margin-top: 15px;
-}
-
-footer h3 {
-  color: var(--muted-color);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-footer h3 img {
-  max-width: 75%;
-  width: 200px;
-}
-
-footer button a {
-  color: var(--button-primary-color);
-}
-
-footer button a:hover,
-footer button a:active {
-  color: var(--button-color);
-}
-
-footer a {
-  color: var(--muted-color);
-}
-
-footer a:hover {
-  color: var(--primary-color);
-  font-weight: bold;
-}
-
-footer p {
-  color: var(--discussion-title-color);
-  white-space: pre-line;
-}
-
-footer ul {
-  padding-left: 0;
-  list-style: none;
-}
-
-footer .row {
-  max-width: 1070px;
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  padding: 15px 0;
-  text-align: center;
-}
-
-footer .row div {
-  margin: 0 auto;
-  padding: 0 5px;
-}
-
-.foo-mid {
-  width: 50%;
-}
-
-.foo-mid li {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: var(--muted-color);
-}
-
-.foo-bottom {
-  background: var(--muted-color);
-  padding: 10px;
-  margin-top: 15px;
-  text-align: center;
-}
-
-body when (@config-dark-mode = true) {
-  .foo-bottom {
-    background: var(--button-color);
+#modern-footer {
+  div {
+    background-color: var(--button-bg);
   }
-}
 
-.foo-bottom p {
-  color: var(--body-bg-light);
-  margin:0;
-}
+  h3 {
+    color: var(--muted-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
-footer .Social {
-  background-color: var(--button-color);
-  margin: 3px;
-}
-
-footer .Social i {
-  color: var(--body-bg-light);
-}
-
-footer .Social:hover,
-footer .Social:active,
-footer .Social:focus {
-  background-color: var(--muted-color-light);
-}
-
-@media (min-width: 767.98px) {
-  .foo-left {
-    flex: 0 0 27%;
-    max-width: 27%;
+    img {
+      max-width: 75%;
+      width: 200px;
+    }
   }
+
+  button {
+    a {
+      color: var(--button-primary-color);
+
+      &:hover,
+      &:active {
+        color: var(--button-color);
+      }
+    }
+  }
+
+  a {
+    color: var(--muted-color);
+
+    &:hover {
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+  }
+
+  p {
+    color: var(--discussion-title-color);
+    white-space: pre-line;
+  }
+
+  ul {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .row {
+    max-width: 1070px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 15px 0;
+    text-align: center;
+
+    div {
+      margin: 0 auto;
+      padding: 0 5px;
+    }
+  }
+
   .foo-mid {
-    flex: 0 0 14.6%;
-    max-width: 14.6%;
-  }
-}
+    width: 50%;
 
-@media (max-width: 767.98px) {
-  .App-content {
-    padding-bottom: 0;
+    li {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: var(--muted-color);
+    }
   }
-}
 
-.App {
-  padding-bottom: 0;
+  .foo-bottom {
+    background: var(--muted-color);
+    padding: 10px;
+    text-align: center;
+
+    p {
+      color: var(--body-bg-light);
+      margin: 0;
+    }
+
+    body when (@config-dark-mode = true) & {
+      background: var(--button-color);
+    }
+  }
+
+  .Social {
+    background-color: var(--button-color);
+    margin: 3px;
+
+    i {
+      color: var(--body-bg-light);
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: var(--muted-color-light);
+    }
+  }
+
+  @media (min-width: 767.98px) {
+    .foo-left {
+      flex: 0 0 27%;
+      max-width: 27%;
+    }
+    .foo-mid {
+      flex: 0 0 14.6%;
+      max-width: 14.6%;
+    }
+  }
 }
