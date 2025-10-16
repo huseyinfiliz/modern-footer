@@ -1,53 +1,37 @@
-# Modern Footer Extension for Flarum
+# Modern Footer
 
-![](https://i.ibb.co/ZBjTkC5/modern-footer-v8.png)
-
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/huseyinfiliz/modern-footer/blob/main/LICENSE)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 [![Latest Stable Version](https://img.shields.io/packagist/v/huseyinfiliz/modern-footer.svg)](https://packagist.org/packages/huseyinfiliz/modern-footer)
 [![Total Downloads](https://img.shields.io/packagist/dt/huseyinfiliz/modern-footer.svg)](https://packagist.org/packages/huseyinfiliz/modern-footer)
-[![CI](https://github.com/huseyinfiliz/modern-footer/workflows/CI/badge.svg)](https://github.com/huseyinfiliz/modern-footer/actions)
 
-## Description
+A [Flarum](http://flarum.org) extension that allows you to create a customizable, responsive footer for your forum.
 
-This extension allows you to create a customizable, responsive footer for your Flarum forum. It automatically matches your forum's secondary color and is fully compatible with night mode. You can fully customize everything from the settings page, including an area to add your custom JavaScript code.
+![Modern Footer Demo](https://i.ibb.co/ZBjTkC5/modern-footer-v8.png)
 
-### Features
+## Features
 
 - ✨ Fully customizable footer blocks with titles and icons
-- 🎨 Automatic color matching with forum theme
+- 🎨 Automatic color matching with your forum theme
 - 🌙 Dark mode support
-- 📱 Responsive design
-- 🔗 Smart link handling (internal/external)
-- 🎯 Display mode options (show/hide on specific pages)
-- ⚙️ Custom HTML & JavaScript support
+- 📱 Fully responsive design
+- 🔗 Smart link handling (internal links open normally, external in new tab)
+- 🎯 Display mode options (control where footer appears)
+- ⚙️ Custom HTML & JavaScript injection
 - 📲 Mobile Tab extension compatibility
 
-### Demo
-
-![](https://i.ibb.co/LhBP7Pn/Ek-A-klama-2024-12-16-100146.png)
-
-## Requirements
-
-- PHP 8.2 or higher
-- Flarum 1.8.0 or higher
+![Settings Example](https://i.ibb.co/LhBP7Pn/Ek-A-klama-2024-12-16-100146.png)
 
 ## Installation
 
-Install using Composer:
+Install with Composer:
 
 ```bash
-composer require huseyinfiliz/modern-footer
+composer require huseyinfiliz/modern-footer:"*"
 ```
 
-Or install via Extension Manager in your Flarum admin panel:
-
-```
-huseyinfiliz/modern-footer
-```
+Or use the [Extension Manager](https://extiverse.com/extension/flarum/extension-manager) in your admin panel and search for `huseyinfiliz/modern-footer`.
 
 ## Updating
-
-Update to the latest version:
 
 ```bash
 composer update huseyinfiliz/modern-footer
@@ -55,134 +39,76 @@ php flarum migrate
 php flarum cache:clear
 ```
 
-## Removal
-
-To remove the extension:
-
-```bash
-composer remove huseyinfiliz/modern-footer
-```
-
 ## Configuration
 
-After installation, go to your Flarum admin panel > Extensions > Modern Footer to configure:
+After installation, enable the extension and configure it in your admin panel:
+
+**Admin → Extensions → Modern Footer**
+
 
 ### General Settings
-- **Display Mode**: Choose where the footer should appear
+
+- **Display Mode**: Control where the footer appears
   - All pages
-  - Hide everywhere
-  - Hide on discussions
-  - Hide except index
-- **Footer Sections**: Enable/disable individual footer blocks
-- **Mobile Tab Height**: Adjust spacing for Mobile Tab extension
+  - Hide everywhere  
+  - Hide on discussion pages
+  - Hide except on index
+  
+- **Footer Sections**: Enable or disable individual footer blocks
+- **Mobile Tab Height**: Adjust footer margin for Mobile Tab extension compatibility
 
 ### Information Block
-- Forum logo or custom HTML
-- Right side text
-- Social media buttons (up to 4)
 
-### Link Blocks (up to 4 blocks)
+Customize the left section of your footer:
+- Forum logo or custom HTML title
+- Descriptive text
+- Social media buttons (up to 4 with custom icons and links)
+
+### Link Blocks
+
+Create up to 4 customizable link blocks:
 - Custom title with FontAwesome icon
 - Up to 6 links per block
-- Automatic internal/external link detection
+- Links automatically detected as internal/external
 
-### Bottom Section
-- Copyright text
-- Full-width bottom bar
+### Bottom Bar
 
-### Advanced
-- Custom HTML injection
-- Custom JavaScript code
+- Custom copyright text
+- Full-width bottom section
 
-## Mobile Support
+### Advanced Options
 
-If you are using the [Mobile Tab](https://discuss.flarum.org/d/28216-mobile-tab) extension, you can adjust the footer margin in the settings to prevent overlap.
+- **Custom HTML**: Inject custom HTML content
+- **Custom JavaScript**: Add custom JS code
 
-![](https://i.ibb.co/74F3Tb0/Ek-A-klama-2024-12-16-095108.png)
+## Mobile Tab Compatibility
 
-## Development
+If you're using the [Mobile Tab](https://discuss.flarum.org/d/28216-mobile-tab) extension, you can adjust the footer margin in the settings to prevent overlap.
 
-### Prerequisites
-
-- PHP 8.2+
-- Composer
-- Node.js 18+
-- npm
-
-### Setup
-
-1. Clone the repository
-2. Install PHP dependencies: `composer install`
-3. Install JS dependencies: `cd js && npm install`
-4. Build frontend assets: `npm run build`
-
-### Code Quality
-
-Run quality assurance checks:
-
-```bash
-# Run all checks
-composer qa
-
-# Individual checks
-composer cs          # Check code style
-composer cs:fix      # Fix code style
-composer analyse     # Run PHPStan
-composer test        # Run tests
-```
-
-### Frontend Development
-
-```bash
-cd js
-npm run dev          # Watch mode for development
-npm run build        # Production build
-npm run format       # Format code
-npm run format-check # Check formatting
-```
-
-## Testing
-
-Run the test suite:
-
-```bash
-composer test
-```
-
-Run tests with coverage:
-
-```bash
-composer test:coverage
-```
+![Mobile Tab Setting](https://i.ibb.co/74F3Tb0/Ek-A-klama-2024-12-16-095108.png)
 
 ## Links
 
-- [Discuss](https://discuss.flarum.org/d/36603)
+- [Flarum Community](https://discuss.flarum.org/d/36603)
 - [Packagist](https://packagist.org/packages/huseyinfiliz/modern-footer)
-- [GitHub](https://github.com/huseyinfiliz/modern-footer)
+- [Source Code](https://github.com/huseyinfiliz/modern-footer)
 - [Report Issues](https://github.com/huseyinfiliz/modern-footer/issues)
 
 ## Credits
 
-Special thanks to [@umutcandev](https://github.com/umutcandev) for the new footer design and big thanks to the FoF team for their contribution!
-
-## License
-
-[MIT License](LICENSE)
+Special thanks to:
+- [@umutcandev](https://github.com/umutcandev) for the new footer design
+- The FriendsOfFlarum team for their contributions
 
 ## Support
 
-For support, please:
+Having trouble? 
 
-1. Check the [documentation](https://github.com/huseyinfiliz/modern-footer)
+1. Check the [documentation](https://github.com/huseyinfiliz/modern-footer#readme)
 2. Search [existing issues](https://github.com/huseyinfiliz/modern-footer/issues)
-3. Ask on the [Flarum community](https://discuss.flarum.org/d/36603)
-4. [Open a new issue](https://github.com/huseyinfiliz/modern-footer/issues/new) if needed
+3. Ask in the [Flarum community](https://discuss.flarum.org/d/36603)
+4. [Open a new issue](https://github.com/huseyinfiliz/modern-footer/issues/new)
 
-## Feedback & Suggestions
+## License
 
-I'm always happy to hear more requests and suggestions! Feel free to open an issue or discuss on the Flarum community forum.
-
----
-
-Made with ❤️ by [Huseyin Filiz](https://github.com/huseyinfiliz)
+[MIT License](LICENSE) - Copyright (c) 2025 Huseyin Filiz
