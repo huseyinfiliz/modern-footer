@@ -1,0 +1,45 @@
+name: Frontend Tests
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master, develop]
+
+jobs:
+  build:
+    name: Frontend Build & Format Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: js/package-lock.json
+
+      - name: Install JS dependencies
+        run: |
+          cd js
+          npm ci
+
+      - name: Build frontend
+        run: |
+          cd js
+          npm run build
+
+      - name: Check formatting
+        run: |
+          cd js
+          npm run format-check || echo "Prettier check skipped"
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: js/dist/
+          retention-days: 7

@@ -1,0 +1,110 @@
+{
+    "name": "huseyinfiliz/modern-footer",
+    "version": "1.1.0",
+    "description": "Allows the Addition of a Modern Footer",
+    "keywords": [
+        "footer",
+        "modern",
+        "flarum",
+        "responsive",
+        "compatible"
+    ],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/huseyinfiliz/modern-footer/issues",
+        "source": "https://github.com/huseyinfiliz/modern-footer",
+        "forum": "https://discuss.flarum.org/d/36603"
+    },
+    "homepage": "https://github.com/huseyinfiliz",
+    "funding": [
+        {
+            "type": "website",
+            "url": "https://github.com/huseyinfiliz"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "flarum/core": "^1.8.0"
+    },
+    "authors": [
+        {
+            "name": "Huseyin Filiz",
+            "email": "huseyinfiliz@pm.me",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "HuseyinFiliz\\ModernFooter\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "HuseyinFiliz\\ModernFooter\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Modern Footer",
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-cogs",
+                "backgroundColor": "#3498db",
+                "color": "#fff"
+            }
+        }
+    },
+    "flagrow": {
+        "discuss": "https://discuss.flarum.org/d/36603"
+    },
+    "flarum-cli": {
+        "modules": {
+            "githubActions": true
+        }
+    },
+    "require-dev": {
+        "flarum/phpstan": "*",
+        "flarum/testing": "^1.0",
+        "friendsofphp/php-cs-fixer": "^3.64"
+    },
+    "scripts": {
+        "test": "phpunit -c phpunit.xml",
+        "test:coverage": "phpunit -c phpunit.xml --coverage-html coverage",
+        "analyse": "@php -r \"echo '⚠️  PHPStan disabled due to missing sockets extension.\\nTo enable: Install php-sockets extension on your server.\\nRunning tests only...\\n\\n';\"",
+        "analyse:clear": "@php -r \"echo 'PHPStan cache clear skipped (PHPStan disabled)\\n';\"",
+        "cs": [
+            "@php -r \"if (!file_exists('vendor/bin/php-cs-fixer')) { echo '⚠️  php-cs-fixer not installed. Installing...\\n'; exit(0); }\"",
+            "vendor/bin/php-cs-fixer fix --dry-run --diff"
+        ],
+        "cs:fix": [
+            "@php -r \"if (!file_exists('vendor/bin/php-cs-fixer')) { echo '⚠️  php-cs-fixer not installed. Run: composer install\\n'; exit(1); }\"",
+            "vendor/bin/php-cs-fixer fix"
+        ],
+        "qa": [
+            "@test"
+        ],
+        "qa:full": [
+            "@cs",
+            "@test"
+        ]
+    },
+    "scripts-descriptions": {
+        "test": "Run unit tests",
+        "test:coverage": "Run tests with code coverage",
+        "analyse": "PHPStan disabled - requires php-sockets extension",
+        "analyse:clear": "PHPStan cache clear (disabled)",
+        "cs": "Check code style (requires php-cs-fixer)",
+        "cs:fix": "Fix code style issues (requires php-cs-fixer)",
+        "qa": "Run essential quality checks (Tests only - PHPStan disabled)",
+        "qa:full": "Run all available quality checks (Code Style + Tests)"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

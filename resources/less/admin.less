@@ -1,0 +1,95 @@
+.huseyinfiliz-modern-footer-Page .ExtensionPage-body {
+  .ExtensionPage-permissions-header {
+      margin: 0;
+  }
+    .ExtensionPage-permissions>.container {
+	background: var(--control-bg);
+    }
+  .SettingsPage {
+    background: @control-bg;
+    padding: 20px;
+
+    .SettingsPage-menu {
+      background: @primary-color;
+      border-radius: @border-radius;
+      padding: 10px;
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: ruby;
+        gap: 10px;
+
+        li {
+          button {
+            background: @primary-color;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: @border-radius;
+            cursor: pointer;
+            transition: background 0.3s ease;
+
+            &:hover {
+              background: darken(@primary-color, 10%);
+            }
+
+            &.active {
+              background: lighten(@primary-color, 10%);
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+
+    .SettingsPage-content {
+      background: @body-bg;
+      border-radius: @border-radius;
+      padding: 15px;
+
+      fieldset {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid @muted-color;
+        border-radius: @border-radius;
+
+        legend {
+          font-size: 16px;
+          font-weight: bold;
+          color: @primary-color;
+          padding: 0 5px;
+        }
+
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+
+          li {
+            margin-bottom: 10px;
+
+            .FormControl {
+              max-width: 400px;
+              padding: 8px;
+              border: 1px solid @muted-color;
+              border-radius: @border-radius;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .huseyinfiliz-modern-footer-Page .ExtensionPage-body {
+    .SettingsPage {
+      .SettingsPage-menu {
+        text-align: center;
+        text-align: -webkit-center;
+      }
+    }
+  }
+}
