@@ -52,7 +52,9 @@ export default class BlockTitlesPage extends Component {
                   <input className="FormControl" bidi={this.values[titleKey]} />
                   <p className="helpText">
                     {t('forum_logo_help')}
-                    <code>{' <i class="fas fa-link"></i> '} {t('title')}</code>
+                    <code>
+                      {' <i class="fas fa-link"></i> '} {t('title')}
+                    </code>
                   </p>
                 </div>
               )}

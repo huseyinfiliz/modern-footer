@@ -28,25 +28,17 @@ export default class BottomPage extends Component {
           {/* Custom HTML FieldSet'i */}
           {FieldSet.component({ label: t('custom_html') }, [
             <div className="Form-group">
-              <textarea
-                className="FormControl"
-                rows="10"
-                bidi={this.values['modern-footer.html']}
-                placeholder={t('custom_html')}
-              />
-            </div>
+              <textarea className="FormControl" rows="10" bidi={this.values['modern-footer.html']} placeholder={t('custom_html')} />
+            </div>,
           ])}
 
           {/* Bottom Section FieldSet'i */}
           {FieldSet.component({ label: t('bottom_section') }, [
             <div className="Form-group">
               <label>{t('text')}</label>
-              <input
-                className="FormControl"
-                bidi={this.values['modern-footer.copyright']}
-              />
+              <input className="FormControl" bidi={this.values['modern-footer.copyright']} />
               <p className="helpText">{t('bottom_help')}</p>
-            </div>
+            </div>,
           ])}
 
           <div className="Form-group">

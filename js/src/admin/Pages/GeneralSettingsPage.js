@@ -46,9 +46,7 @@ export default class GeneralSettingsPage extends Component {
         app.data.settings[titleKey] = uniqueBlockTitle;
       }
 
-      this.values[key] = Stream(
-        app.data.settings[key] || (key.includes('enabled') ? '1' : key === 'modern-footer.display-mode' ? '0' : '')
-      );
+      this.values[key] = Stream(app.data.settings[key] || (key.includes('enabled') ? '1' : key === 'modern-footer.display-mode' ? '0' : ''));
 
       this.values[key].map((value) => {
         app.data.settings[key] = value;
@@ -89,16 +87,10 @@ export default class GeneralSettingsPage extends Component {
             .map(({ key, translationKey, blockNumber }) => (
               <div className="Form-group" key={key}>
                 <label className={`Checkbox ${this.values[key]() === '1' ? 'on' : 'off'} Checkbox--switch`}>
-                  <input
-                    type="checkbox"
-                    checked={this.values[key]() === '1'}
-                    onchange={(e) => this.values[key](e.target.checked ? '1' : '0')}
-                  />
+                  <input type="checkbox" checked={this.values[key]() === '1'} onchange={(e) => this.values[key](e.target.checked ? '1' : '0')} />
                   <div className="Checkbox-display" aria-hidden="true"></div>
                   {/* Blok başlıklarını doğrudan app.data.settings'den alıyoruz */}
-                  {blockNumber
-                    ? app.data.settings[`modern-footer.title-${blockNumber}`] || `${t('block')} #${blockNumber}`
-                    : t(translationKey)}
+                  {blockNumber ? app.data.settings[`modern-footer.title-${blockNumber}`] || `${t('block')} #${blockNumber}` : t(translationKey)}
                 </label>
               </div>
             ))}
@@ -106,12 +98,7 @@ export default class GeneralSettingsPage extends Component {
 
         <FieldSet label={t('mobile_tab_height')}>
           <div className="Form-group">
-            <input
-              className="FormControl"
-              type="text"
-              bidi={this.values['modern-footer.mobile-tab']}
-              placeholder="var(--mobile-tab-height) / 54px"
-            />
+            <input className="FormControl" type="text" bidi={this.values['modern-footer.mobile-tab']} placeholder="var(--mobile-tab-height) / 54px" />
             <p className="helpText">{t('mobile_tab_height_help')}</p>
           </div>
         </FieldSet>

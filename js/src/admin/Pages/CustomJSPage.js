@@ -21,11 +21,7 @@ export default class CustomJSPage extends Component {
         <div className="container">
           {FieldSet.component({ label: t('custom_js_code') }, [
             <div className="Form-group">
-              <textarea
-                className="FormControl"
-                bidi={this.jsSetting}
-                rows="10"
-              />
+              <textarea className="FormControl" bidi={this.jsSetting} rows="10" />
             </div>,
           ])}
 

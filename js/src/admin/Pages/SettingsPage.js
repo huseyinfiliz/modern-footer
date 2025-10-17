@@ -80,8 +80,7 @@ export default class SettingsPage extends ExtensionPage {
                 m.route.set(app.route('extension', { id: 'huseyinfiliz-modern-footer', page: key }));
               }}
             >
-              <i className={icon} />{' '}
-              {label}
+              <i className={icon} /> {label}
             </button>
           </li>
         ))}
@@ -101,12 +100,8 @@ export default class SettingsPage extends ExtensionPage {
 
     return (
       <div className="SettingsPage">
-        <div className="SettingsPage-menu">
-          {renderMenuItems()}
-        </div>
-        <div className="SettingsPage-content">
-          {renderActivePage()}
-        </div>
+        <div className="SettingsPage-menu">{renderMenuItems()}</div>
+        <div className="SettingsPage-content">{renderActivePage()}</div>
       </div>
     );
   }

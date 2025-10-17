@@ -40,11 +40,7 @@ export default class InformationPage extends Component {
 
           {FieldSet.component({ label: t('about_us') }, [
             <div className="Form-group">
-              <textarea
-                className="FormControl"
-                rows="10"
-                bidi={this.values['modern-footer.right-text']}
-              />
+              <textarea className="FormControl" rows="10" bidi={this.values['modern-footer.right-text']} />
               <p className="helpText">{t('about_us_help')}</p>
             </div>,
           ])}
@@ -56,11 +52,7 @@ export default class InformationPage extends Component {
             </div>,
             <div className="Form-group">
               <label>{t('social_link')}</label>
-              <input
-                className="FormControl"
-                bidi={this.values['modern-footer.contact-link']}
-                placeholder="https://www.example.com/username"
-              />
+              <input className="FormControl" bidi={this.values['modern-footer.contact-link']} placeholder="https://www.example.com/username" />
             </div>,
           ])}
 
@@ -71,11 +63,7 @@ export default class InformationPage extends Component {
             </div>,
             <div className="Form-group">
               <label>{t('social_link')}</label>
-              <input
-                className="FormControl"
-                bidi={this.values['modern-footer.contact-link-2']}
-                placeholder="https://www.example.com/username"
-              />
+              <input className="FormControl" bidi={this.values['modern-footer.contact-link-2']} placeholder="https://www.example.com/username" />
             </div>,
           ])}
 
@@ -86,11 +74,7 @@ export default class InformationPage extends Component {
             </div>,
             <div className="Form-group">
               <label>{t('social_link')}</label>
-              <input
-                className="FormControl"
-                bidi={this.values['modern-footer.contact-link-3']}
-                placeholder="https://www.example.com/username"
-              />
+              <input className="FormControl" bidi={this.values['modern-footer.contact-link-3']} placeholder="https://www.example.com/username" />
             </div>,
           ])}
 
@@ -101,11 +85,7 @@ export default class InformationPage extends Component {
             </div>,
             <div className="Form-group">
               <label>{t('social_link')}</label>
-              <input
-                className="FormControl"
-                bidi={this.values['modern-footer.contact-link-4']}
-                placeholder="https://www.example.com/username"
-              />
+              <input className="FormControl" bidi={this.values['modern-footer.contact-link-4']} placeholder="https://www.example.com/username" />
             </div>,
           ])}
 

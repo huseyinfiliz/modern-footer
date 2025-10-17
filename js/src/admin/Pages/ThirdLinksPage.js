@@ -38,19 +38,11 @@ export default class ThirdLinksPage extends Component {
               <div className="LinkSection">
                 <div className="Form-group">
                   <label>{t('text')}</label>
-                  <input
-                    className="FormControl"
-                    bidi={this.values[section.titleKey]}
-                    placeholder={t('text')}
-                  />
+                  <input className="FormControl" bidi={this.values[section.titleKey]} placeholder={t('text')} />
                 </div>
                 <div className="Form-group">
                   <label>{t('link')}</label>
-                  <input
-                    className="FormControl"
-                    bidi={this.values[section.urlKey]}
-                    placeholder={t('link')}
-                  />
+                  <input className="FormControl" bidi={this.values[section.urlKey]} placeholder={t('link')} />
                 </div>
               </div>,
             ]);
