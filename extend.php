@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace HuseyinFiliz\ModernFooter;
+namespace huseyinfiliz\ModernFooter;
 
 use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Extend;

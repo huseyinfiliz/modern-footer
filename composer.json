@@ -1,6 +1,5 @@
 {
     "name": "huseyinfiliz/modern-footer",
-    "version": "1.1.0",
     "description": "Allows the Addition of a Modern Footer",
     "keywords": [
         "footer",
@@ -29,19 +28,19 @@
     },
     "authors": [
         {
-            "name": "Huseyin Filiz",
-            "email": "huseyinfiliz@pm.me",
+            "name": "Hüseyin Filiz",
+            "email": "mysuperuser01@gmail.com",
             "role": "Developer"
         }
     ],
     "autoload": {
         "psr-4": {
-            "HuseyinFiliz\\ModernFooter\\": "src/"
+            "huseyinfiliz\\ModernFooter\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "HuseyinFiliz\\ModernFooter\\Tests\\": "tests/"
+            "huseyinfiliz\\ModernFooter\\Tests\\": "tests/"
         }
     },
     "extra": {

@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace HuseyinFiliz\ModernFooter\Tests\Unit;
+namespace huseyinfiliz\ModernFooter\Tests\Unit;
 
 use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Extend;
