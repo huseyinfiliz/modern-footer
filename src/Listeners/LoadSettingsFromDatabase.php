@@ -55,12 +55,8 @@ class LoadSettingsFromDatabase
         'display-mode',
     ];
 
-    protected SettingsRepositoryInterface $settings;
-
-    public function __construct(SettingsRepositoryInterface $settings)
+    public function __construct(protected SettingsRepositoryInterface $settings)
     {
-        $this->settings = $settings;
-
         // Adding text and link fields dynamically
         for ($i = 1; $i <= 24; $i++) {
             $this->fieldsToGet[] = "text-{$i}";
