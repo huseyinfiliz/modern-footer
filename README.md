@@ -6,7 +6,7 @@
 
 A [Flarum](http://flarum.org) extension that allows you to create a customizable, responsive footer for your forum.
 
-![Modern Footer Demo](https://i.ibb.co/ZBjTkC5/modern-footer-v8.png)
+![Modern Footer Demo](https://i.ibb.co/wZNXRZ0K/modern-footer-v1.png)
 
 ## Features
 
