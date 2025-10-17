@@ -9,7 +9,7 @@ import ThirdLinksPage from './ThirdLinksPage';
 import FourthLinksPage from './FourthLinksPage';
 import BottomPage from './BottomPage';
 import CustomJSPage from './CustomJSPage';
-import Stream from 'flarum/utils/Stream';
+import Stream from 'flarum/common/utils/Stream';
 
 export default class SettingsPage extends ExtensionPage {
   oninit(vnode) {
@@ -19,7 +19,7 @@ export default class SettingsPage extends ExtensionPage {
   }
 
   content() {
-    const page = m.route.param('page') || 'general';
+    const page = m.route.param().page || 'general';
 
     const translationPrefix = 'huseyinfiliz-modern-footer.admin.settings.';
 

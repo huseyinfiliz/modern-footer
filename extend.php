@@ -1,14 +1,4 @@
 <?php
-
-/*
- * This file is part of huseyinfiliz/modern-footer.
- *
- * Copyright (c) Huseyin Filiz.
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace huseyinfiliz\ModernFooter;
 
 use Flarum\Extend;
@@ -24,7 +14,83 @@ return [
 
     new Extend\Locales(__DIR__ . '/resources/locale'),
 
-    // Serialize all modern-footer.* settings to forum
     (new Extend\Settings())
-        ->serializeToForum('modern-footer.*', 'modern-footer.*'),
+        ->serializeToForum('modern-footer.info-enabled', 'modern-footer.info-enabled')
+        ->serializeToForum('modern-footer.links-1-enabled', 'modern-footer.links-1-enabled')
+        ->serializeToForum('modern-footer.links-2-enabled', 'modern-footer.links-2-enabled')
+        ->serializeToForum('modern-footer.links-3-enabled', 'modern-footer.links-3-enabled')
+        ->serializeToForum('modern-footer.links-4-enabled', 'modern-footer.links-4-enabled')
+        ->serializeToForum('modern-footer.bottom-enabled', 'modern-footer.bottom-enabled')
+        ->serializeToForum('modern-footer.display-mode', 'modern-footer.display-mode')
+        ->serializeToForum('modern-footer.title-1', 'modern-footer.title-1')
+        ->serializeToForum('modern-footer.title-2', 'modern-footer.title-2')
+        ->serializeToForum('modern-footer.title-3', 'modern-footer.title-3')
+        ->serializeToForum('modern-footer.title-4', 'modern-footer.title-4')
+        ->serializeToForum('modern-footer.title-5', 'modern-footer.title-5')
+        ->serializeToForum('modern-footer.title-fa-2', 'modern-footer.title-fa-2')
+        ->serializeToForum('modern-footer.title-fa-3', 'modern-footer.title-fa-3')
+        ->serializeToForum('modern-footer.title-fa-4', 'modern-footer.title-fa-4')
+        ->serializeToForum('modern-footer.title-fa-5', 'modern-footer.title-fa-5')
+        ->serializeToForum('modern-footer.right-text', 'modern-footer.right-text')
+        ->serializeToForum('modern-footer.copyright', 'modern-footer.copyright')
+        ->serializeToForum('modern-footer.html', 'modern-footer.html')
+        ->serializeToForum('modern-footer.js', 'modern-footer.js')
+        ->serializeToForum('modern-footer.mobile-tab', 'modern-footer.mobile-tab')
+        ->serializeToForum('modern-footer.contact', 'modern-footer.contact')
+        ->serializeToForum('modern-footer.contact-link', 'modern-footer.contact-link')
+        ->serializeToForum('modern-footer.contact-2', 'modern-footer.contact-2')
+        ->serializeToForum('modern-footer.contact-link-2', 'modern-footer.contact-link-2')
+        ->serializeToForum('modern-footer.contact-3', 'modern-footer.contact-3')
+        ->serializeToForum('modern-footer.contact-link-3', 'modern-footer.contact-link-3')
+        ->serializeToForum('modern-footer.contact-4', 'modern-footer.contact-4')
+        ->serializeToForum('modern-footer.contact-link-4', 'modern-footer.contact-link-4')
+        // 24 text ve link için loop yapalım
+        ->serializeToForum('modern-footer.text-1', 'modern-footer.text-1')
+        ->serializeToForum('modern-footer.link-1', 'modern-footer.link-1')
+        ->serializeToForum('modern-footer.text-2', 'modern-footer.text-2')
+        ->serializeToForum('modern-footer.link-2', 'modern-footer.link-2')
+        ->serializeToForum('modern-footer.text-3', 'modern-footer.text-3')
+        ->serializeToForum('modern-footer.link-3', 'modern-footer.link-3')
+        ->serializeToForum('modern-footer.text-4', 'modern-footer.text-4')
+        ->serializeToForum('modern-footer.link-4', 'modern-footer.link-4')
+        ->serializeToForum('modern-footer.text-5', 'modern-footer.text-5')
+        ->serializeToForum('modern-footer.link-5', 'modern-footer.link-5')
+        ->serializeToForum('modern-footer.text-6', 'modern-footer.text-6')
+        ->serializeToForum('modern-footer.link-6', 'modern-footer.link-6')
+        ->serializeToForum('modern-footer.text-7', 'modern-footer.text-7')
+        ->serializeToForum('modern-footer.link-7', 'modern-footer.link-7')
+        ->serializeToForum('modern-footer.text-8', 'modern-footer.text-8')
+        ->serializeToForum('modern-footer.link-8', 'modern-footer.link-8')
+        ->serializeToForum('modern-footer.text-9', 'modern-footer.text-9')
+        ->serializeToForum('modern-footer.link-9', 'modern-footer.link-9')
+        ->serializeToForum('modern-footer.text-10', 'modern-footer.text-10')
+        ->serializeToForum('modern-footer.link-10', 'modern-footer.link-10')
+        ->serializeToForum('modern-footer.text-11', 'modern-footer.text-11')
+        ->serializeToForum('modern-footer.link-11', 'modern-footer.link-11')
+        ->serializeToForum('modern-footer.text-12', 'modern-footer.text-12')
+        ->serializeToForum('modern-footer.link-12', 'modern-footer.link-12')
+        ->serializeToForum('modern-footer.text-13', 'modern-footer.text-13')
+        ->serializeToForum('modern-footer.link-13', 'modern-footer.link-13')
+        ->serializeToForum('modern-footer.text-14', 'modern-footer.text-14')
+        ->serializeToForum('modern-footer.link-14', 'modern-footer.link-14')
+        ->serializeToForum('modern-footer.text-15', 'modern-footer.text-15')
+        ->serializeToForum('modern-footer.link-15', 'modern-footer.link-15')
+        ->serializeToForum('modern-footer.text-16', 'modern-footer.text-16')
+        ->serializeToForum('modern-footer.link-16', 'modern-footer.link-16')
+        ->serializeToForum('modern-footer.text-17', 'modern-footer.text-17')
+        ->serializeToForum('modern-footer.link-17', 'modern-footer.link-17')
+        ->serializeToForum('modern-footer.text-18', 'modern-footer.text-18')
+        ->serializeToForum('modern-footer.link-18', 'modern-footer.link-18')
+        ->serializeToForum('modern-footer.text-19', 'modern-footer.text-19')
+        ->serializeToForum('modern-footer.link-19', 'modern-footer.link-19')
+        ->serializeToForum('modern-footer.text-20', 'modern-footer.text-20')
+        ->serializeToForum('modern-footer.link-20', 'modern-footer.link-20')
+        ->serializeToForum('modern-footer.text-21', 'modern-footer.text-21')
+        ->serializeToForum('modern-footer.link-21', 'modern-footer.link-21')
+        ->serializeToForum('modern-footer.text-22', 'modern-footer.text-22')
+        ->serializeToForum('modern-footer.link-22', 'modern-footer.link-22')
+        ->serializeToForum('modern-footer.text-23', 'modern-footer.text-23')
+        ->serializeToForum('modern-footer.link-23', 'modern-footer.link-23')
+        ->serializeToForum('modern-footer.text-24', 'modern-footer.text-24')
+        ->serializeToForum('modern-footer.link-24', 'modern-footer.link-24'),
 ];

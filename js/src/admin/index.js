@@ -1,6 +1,4 @@
 import app from 'flarum/admin/app';
-import SettingsPage from './Pages/SettingsPage';
+export { default as extend } from './extend';
 
-app.initializers.add('huseyinfiliz-modern-footer', () => {
-  app.registry.for('huseyinfiliz-modern-footer').registerPage(SettingsPage);
-});
+app.initializers.add('huseyinfiliz-modern-footer', () => {});

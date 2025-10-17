@@ -1,8 +1,8 @@
 import Component from 'flarum/common/Component';
-import FieldSet from 'flarum/components/FieldSet';
-import Button from 'flarum/components/Button';
-import saveSettings from 'flarum/utils/saveSettings';
-import Stream from 'flarum/utils/Stream';
+import FieldSet from 'flarum/common/components/FieldSet';
+import Button from 'flarum/common/components/Button';
+import saveSettings from 'flarum/admin/utils/saveSettings';
+import Stream from 'flarum/common/utils/Stream';
 
 export default class FourthLinksPage extends Component {
   oninit(vnode) {

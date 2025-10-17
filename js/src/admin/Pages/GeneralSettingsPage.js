@@ -1,8 +1,8 @@
 import Component from 'flarum/common/Component';
-import FieldSet from 'flarum/components/FieldSet';
-import Stream from 'flarum/utils/Stream';
-import Button from 'flarum/components/Button';
-import saveSettings from 'flarum/utils/saveSettings';
+import FieldSet from 'flarum/common/components/FieldSet';
+import Stream from 'flarum/common/utils/Stream';
+import Button from 'flarum/common/components/Button';
+import saveSettings from 'flarum/admin/utils/saveSettings';
 
 export default class GeneralSettingsPage extends Component {
   oninit(vnode) {
