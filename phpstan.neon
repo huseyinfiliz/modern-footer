@@ -8,7 +8,6 @@ parameters:
         - src
     excludePaths:
         - '*.blade.php'
-    checkMissingIterableValueType: false
     databaseMigrationsPath: ['migrations']
     
     # Fix for missing sockets extension - disable parallel processing
