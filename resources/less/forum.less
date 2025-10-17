@@ -79,10 +79,12 @@
       color: var(--body-bg-light);
       margin: 0;
     }
-
-    body when (@config-dark-mode = true) & { /* @TODO: use [data-theme^=dark] and [data-theme^=light] instead */
-      background: var(--button-color);
-    }
+  }
+  
+  // Dark mode için ayrı kural
+  [data-theme="dark"] & .foo-bottom,
+  [data-theme="dark_high_contrast"] & .foo-bottom {
+    background: var(--button-color);
   }
 
   .Social {

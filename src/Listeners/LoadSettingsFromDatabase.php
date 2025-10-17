@@ -11,9 +11,8 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace HuseyinFiliz\ModernFooter\Listeners;
+namespace huseyinfiliz\ModernFooter\Listeners;
 
-use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Settings\SettingsRepositoryInterface;
 
 class LoadSettingsFromDatabase
@@ -55,8 +54,12 @@ class LoadSettingsFromDatabase
         'display-mode',
     ];
 
-    public function __construct(protected SettingsRepositoryInterface $settings)
+    protected SettingsRepositoryInterface $settings;
+
+    public function __construct(SettingsRepositoryInterface $settings)
     {
+        $this->settings = $settings;
+
         // Adding text and link fields dynamically
         for ($i = 1; $i <= 24; $i++) {
             $this->fieldsToGet[] = "text-{$i}";
@@ -65,13 +68,14 @@ class LoadSettingsFromDatabase
     }
 
     /**
-     * @param ForumSerializer $serializer
-     * @param mixed $model
-     * @param array<string, mixed> $attributes
+     * Flarum 2.x: Resource API'si için fields metodu
+     * 
      * @return array<string, mixed>
      */
-    public function __invoke(ForumSerializer $serializer, $model, array $attributes): array
+    public function __invoke(): array
     {
+        $attributes = [];
+
         foreach ($this->fieldsToGet as $field) {
             $key = $this->packagePrefix . $field;
             $attributes[$key] = $this->settings->get($key);

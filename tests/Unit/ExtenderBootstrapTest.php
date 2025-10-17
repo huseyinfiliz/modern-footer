@@ -11,11 +11,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace HuseyinFiliz\ModernFooter\Tests\Unit;
+namespace huseyinfiliz\ModernFooter\Tests\Unit;
 
-use Flarum\Api\Serializer\ForumSerializer;
+use Flarum\Api\Resource\ForumResource;
 use Flarum\Extend;
-use HuseyinFiliz\ModernFooter\Listeners\LoadSettingsFromDatabase;
+use huseyinfiliz\ModernFooter\Listeners\LoadSettingsFromDatabase;
 use PHPUnit\Framework\TestCase;
 
 class ExtenderBootstrapTest extends TestCase
@@ -76,19 +76,19 @@ class ExtenderBootstrapTest extends TestCase
         $this->assertTrue($localesExists, 'Locales extender not found');
     }
 
-    public function testSerializerExtenderExists(): void
+    public function testApiResourceExtenderExists(): void
     {
         $extenders = require __DIR__ . '/../../extend.php';
 
-        $serializerExists = false;
+        $apiResourceExists = false;
 
         foreach ($extenders as $extender) {
-            if ($extender instanceof Extend\ApiSerializer) {
-                $serializerExists = true;
+            if ($extender instanceof Extend\ApiResource) {
+                $apiResourceExists = true;
                 break;
             }
         }
 
-        $this->assertTrue($serializerExists, 'ApiSerializer extender not found');
+        $this->assertTrue($apiResourceExists, 'ApiResource extender not found');
     }
 }

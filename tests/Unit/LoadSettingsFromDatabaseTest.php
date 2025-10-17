@@ -11,11 +11,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace HuseyinFiliz\ModernFooter\Tests\Unit;
+namespace huseyinfiliz\ModernFooter\Tests\Unit;
 
-use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Settings\SettingsRepositoryInterface;
-use HuseyinFiliz\ModernFooter\Listeners\LoadSettingsFromDatabase;
+use huseyinfiliz\ModernFooter\Listeners\LoadSettingsFromDatabase;
 use PHPUnit\Framework\TestCase;
 
 class LoadSettingsFromDatabaseTest extends TestCase
@@ -59,11 +58,7 @@ class LoadSettingsFromDatabaseTest extends TestCase
                 };
             });
 
-        $serializer = $this->createMock(ForumSerializer::class);
-        $model = new \stdClass();
-        $attributes = [];
-
-        $result = ($this->listener)($serializer, $model, $attributes);
+        $result = ($this->listener)();
 
         $this->assertIsArray($result);
         $this->assertArrayHasKey('modern-footer.title-1', $result);
@@ -79,11 +74,7 @@ class LoadSettingsFromDatabaseTest extends TestCase
                 return $key === 'modern-footer.display-mode' ? '3' : null;
             });
 
-        $serializer = $this->createMock(ForumSerializer::class);
-        $model = new \stdClass();
-        $attributes = [];
-
-        $result = ($this->listener)($serializer, $model, $attributes);
+        $result = ($this->listener)();
 
         $this->assertIsInt($result['modern-footer.display-mode']);
         $this->assertEquals(3, $result['modern-footer.display-mode']);
@@ -94,11 +85,7 @@ class LoadSettingsFromDatabaseTest extends TestCase
         $this->settings->method('get')
             ->willReturn('test-value');
 
-        $serializer = $this->createMock(ForumSerializer::class);
-        $model = new \stdClass();
-        $attributes = [];
-
-        $result = ($this->listener)($serializer, $model, $attributes);
+        $result = ($this->listener)();
 
         // Check some key fields exist
         $expectedFields = [
