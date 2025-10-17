@@ -6,12 +6,12 @@
 	background: var(--control-bg);
     }
   .SettingsPage {
-    background: @control-bg;
+    background: var(--control-bg);
     padding: 20px;
 
     .SettingsPage-menu {
-      background: @primary-color;
-      border-radius: @border-radius;
+      background: var(--primary-color);
+      border-radius: var(--border-radius);
       padding: 10px;
 
       ul {
@@ -23,11 +23,11 @@
 
         li {
           button {
-            background: @primary-color;
+            background: var(--primary-color);
             color: #ffffff;
             padding: 10px 20px;
             border: none;
-            border-radius: @border-radius;
+            border-radius: var(--border-radius);
             cursor: pointer;
             transition: background 0.3s ease;
 
@@ -45,20 +45,20 @@
     }
 
     .SettingsPage-content {
-      background: @body-bg;
-      border-radius: @border-radius;
+      background: var(--body-bg);
+      border-radius: var(--border-radius);
       padding: 15px;
 
       fieldset {
         margin-bottom: 20px;
         padding: 15px;
-        border: 1px solid @muted-color;
-        border-radius: @border-radius;
+        border: 1px solid var(--muted-color);
+        border-radius: var(--border-radius);
 
         legend {
           font-size: 16px;
           font-weight: bold;
-          color: @primary-color;
+          color: var(--primary-color);
           padding: 0 5px;
         }
 
@@ -73,8 +73,8 @@
             .FormControl {
               max-width: 400px;
               padding: 8px;
-              border: 1px solid @muted-color;
-              border-radius: @border-radius;
+              border: 1px solid var(--muted-color);
+              border-radius: var(--border-radius);
             }
           }
         }
