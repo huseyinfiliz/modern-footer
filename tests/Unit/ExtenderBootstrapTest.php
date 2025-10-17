@@ -15,7 +15,7 @@ namespace huseyinfiliz\ModernFooter\Tests\Unit;
 
 use Flarum\Api\Serializer\ForumSerializer;
 use Flarum\Extend;
-use HuseyinFiliz\ModernFooter\Listeners\LoadSettingsFromDatabase;
+use huseyinfiliz\ModernFooter\Listeners\LoadSettingsFromDatabase;
 use PHPUnit\Framework\TestCase;
 
 class ExtenderBootstrapTest extends TestCase
