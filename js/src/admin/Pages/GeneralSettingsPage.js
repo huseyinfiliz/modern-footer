@@ -19,6 +19,7 @@ export default class GeneralSettingsPage extends Component {
       { key: 'modern-footer.bottom-enabled', translationKey: 'bottom_section' },
       { key: 'modern-footer.mobile-tab', translationKey: 'mobile_tab_height' },
       { key: 'modern-footer.display-mode', translationKey: 'display_mode' },
+      { key: 'modern-footer.visibility-mode', translationKey: 'visibility_mode' },
     ];
 
     this.values = {};
@@ -47,7 +48,10 @@ export default class GeneralSettingsPage extends Component {
       }
 
       this.values[key] = Stream(
-        app.data.settings[key] || (key.includes('enabled') ? '1' : key === 'modern-footer.display-mode' ? '0' : '')
+        app.data.settings[key] || 
+        (key.includes('enabled') ? '1' : 
+         key === 'modern-footer.display-mode' ? '0' : 
+         key === 'modern-footer.visibility-mode' ? 'both' : '')
       );
 
       this.values[key].map((value) => {
@@ -79,6 +83,21 @@ export default class GeneralSettingsPage extends Component {
               <option value="4" disabled>
                 {t('custom')}
               </option>
+            </select>
+          </div>
+        </FieldSet>
+
+        {/* Yeni Visibility Mode ayarı */}
+        <FieldSet label={t('visibility_mode')}>
+          <div className="Form-group">
+            <select
+              className="FormControl"
+              value={this.values['modern-footer.visibility-mode']()}
+              onchange={(e) => this.values['modern-footer.visibility-mode'](e.target.value)}
+            >
+              <option value="both">{t('show_to_everyone')}</option>
+              <option value="members">{t('show_to_members_only')}</option>
+              <option value="guests">{t('show_to_guests_only')}</option>
             </select>
           </div>
         </FieldSet>

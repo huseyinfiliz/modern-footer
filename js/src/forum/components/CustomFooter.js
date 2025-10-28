@@ -10,6 +10,7 @@ export default class CustomFooter extends Component {
   oninit(vnode) {
     super.oninit(vnode);
     this.displayMode = parseInt(app.forum.attribute('modern-footer.display-mode'));
+    this.visibilityMode = app.forum.attribute('modern-footer.visibility-mode') || 'both';
   }
 
   oncreate() {
@@ -33,8 +34,9 @@ export default class CustomFooter extends Component {
 
   view() {
     const showFooter = this.shouldShowFooter(this.displayMode);
+    const hasVisibilityPermission = this.checkVisibilityPermission(this.visibilityMode);
 
-    if (!showFooter) {
+    if (!showFooter || !hasVisibilityPermission) {
       return null;
     }
 
@@ -99,5 +101,19 @@ export default class CustomFooter extends Component {
     };
 
     return displayModeMap[displayMode] !== undefined ? displayModeMap[displayMode] : true;
+  }
+
+  checkVisibilityPermission(visibilityMode) {
+    const isGuest = !app.session.user;
+
+    switch (visibilityMode) {
+      case 'members':
+        return !isGuest; // Sadece üyelere göster
+      case 'guests':
+        return isGuest; // Sadece ziyaretçilere göster
+      case 'both':
+      default:
+        return true; // Herkese göster
+    }
   }
 }

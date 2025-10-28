@@ -53,6 +53,7 @@ class LoadSettingsFromDatabase
         'html',
         'mobile-tab',
         'display-mode',
+        'visibility-mode',
     ];
 
     protected SettingsRepositoryInterface $settings;
