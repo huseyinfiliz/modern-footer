@@ -7,24 +7,30 @@ import Stream from 'flarum/common/utils/Stream';
 export default class CustomJSPage extends Component {
   oninit(vnode) {
     super.oninit(vnode);
-
     this.saving = false;
     this.jsSetting = Stream(app.data.settings['modern-footer.js'] || '');
     this.translationPrefix = 'huseyinfiliz-modern-footer.admin.settings.';
   }
-
+  
   view() {
     const t = (key) => app.translator.trans(this.translationPrefix + key);
-
     return (
       <form onsubmit={this.onsubmit.bind(this)}>
         <div className="container">
-          {FieldSet.component({ label: t('custom_js_code') }, [
+          {FieldSet.component({ 
+            label: (
+              <>
+                <i className="fab fa-js"></i>
+                {' '}
+                {t('custom_js_code')}
+              </>
+            )
+          }, [
             <div className="Form-group">
               <textarea className="FormControl" bidi={this.jsSetting} rows="10" />
             </div>,
           ])}
-
+          
           <div className="Form-group">
             {Button.component(
               {
@@ -39,14 +45,11 @@ export default class CustomJSPage extends Component {
       </form>
     );
   }
-
+  
   onsubmit(e) {
     e.preventDefault();
-
     if (this.saving) return;
-
     this.saving = true;
-
     saveSettings({ 'modern-footer.js': this.jsSetting() })
       .then(() => {
         app.alerts.show({ type: 'success' }, app.translator.trans('core.admin.settings.saved_message'));

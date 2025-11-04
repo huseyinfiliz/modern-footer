@@ -30,6 +30,7 @@ $fieldsToSerialize = [
     'info-enabled', 'links-1-enabled', 'links-2-enabled',
     'links-3-enabled', 'links-4-enabled', 'bottom-enabled',
     'js', 'html', 'mobile-tab',
+    'visibility',
 ];
 
 foreach ($fieldsToSerialize as $field) {

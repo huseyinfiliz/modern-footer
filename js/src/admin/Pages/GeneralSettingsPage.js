@@ -19,10 +19,10 @@ export default class GeneralSettingsPage extends Component {
       { key: 'modern-footer.bottom-enabled', translationKey: 'bottom_section' },
       { key: 'modern-footer.mobile-tab', translationKey: 'mobile_tab_height' },
       { key: 'modern-footer.display-mode', translationKey: 'display_mode' },
+      { key: 'modern-footer.visibility', translationKey: 'visibility_control' },
     ];
 
     this.values = {};
-    // usedTitles'ı blockNumber ile indekslemek için objeye çeviriyoruz
     this.usedTitles = {};
 
     this.fields.forEach(({ key, blockNumber }) => {
@@ -31,22 +31,26 @@ export default class GeneralSettingsPage extends Component {
         const blockTitle = app.data.settings[titleKey];
         const t = (key) => app.translator.trans(this.translationPrefix + key);
 
-        // Varsayılan değeri belirliyoruz
         let uniqueBlockTitle = `${t('block')} #${blockNumber}`;
 
-        // Eğer app.data.settings'de bu blockNumber için bir değer varsa onu kullanıyoruz
         if (blockTitle !== undefined) {
           uniqueBlockTitle = blockTitle;
         }
 
-        // Bu blockNumber'ın title'ının kullanıldığını işaretliyoruz
         this.usedTitles[blockNumber] = true;
-
-        // app.data.settings'e kaydediyoruz
         app.data.settings[titleKey] = uniqueBlockTitle;
       }
 
-      this.values[key] = Stream(app.data.settings[key] || (key.includes('enabled') ? '1' : key === 'modern-footer.display-mode' ? '0' : ''));
+      let defaultValue = '';
+      if (key.includes('enabled')) {
+        defaultValue = '1';
+      } else if (key === 'modern-footer.display-mode') {
+        defaultValue = '0';
+      } else if (key === 'modern-footer.visibility') {
+        defaultValue = 'both';
+      }
+
+      this.values[key] = Stream(app.data.settings[key] || defaultValue);
 
       this.values[key].map((value) => {
         app.data.settings[key] = value;
@@ -61,8 +65,14 @@ export default class GeneralSettingsPage extends Component {
 
     return (
       <div className="GeneralSettings">
-        {/* Display Mode ayarı ilk sıraya taşındı */}
-        <FieldSet label={t('display_mode')}>
+        {/* Display Mode ayarı */}
+        <FieldSet label={
+          <>
+            <i className="fas fa-display"></i>
+            {' '}
+            {t('display_mode')}
+          </>
+        }>
           <div className="Form-group">
             <select
               className="FormControl"
@@ -81,7 +91,35 @@ export default class GeneralSettingsPage extends Component {
           </div>
         </FieldSet>
 
-        <FieldSet label={t('manage_footer_sections')}>
+        {/* Görünürlük Kontrolü */}
+        <FieldSet label={
+          <>
+            <i className="fas fa-eye"></i>
+            {' '}
+            {t('visibility_control')}
+          </>
+        }>
+          <div className="Form-group">
+            <select
+              className="FormControl"
+              value={this.values['modern-footer.visibility']()}
+              onchange={(e) => this.values['modern-footer.visibility'](e.target.value)}
+            >
+              <option value="both">{t('show_to_everyone')}</option>
+              <option value="members">{t('show_to_members_only')}</option>
+              <option value="guests">{t('show_to_guests_only')}</option>
+            </select>
+          </div>
+        </FieldSet>
+
+        {/* Footer Sections */}
+        <FieldSet label={
+          <>
+            <i className="fas fa-layer-group"></i>
+            {' '}
+            {t('manage_footer_sections')}
+          </>
+        }>
           {this.fields
             .filter(({ key }) => key.includes('-enabled'))
             .map(({ key, translationKey, blockNumber }) => (
@@ -89,14 +127,20 @@ export default class GeneralSettingsPage extends Component {
                 <label className={`Checkbox ${this.values[key]() === '1' ? 'on' : 'off'} Checkbox--switch`}>
                   <input type="checkbox" checked={this.values[key]() === '1'} onchange={(e) => this.values[key](e.target.checked ? '1' : '0')} />
                   <div className="Checkbox-display" aria-hidden="true"></div>
-                  {/* Blok başlıklarını doğrudan app.data.settings'den alıyoruz */}
                   {blockNumber ? app.data.settings[`modern-footer.title-${blockNumber}`] || `${t('block')} #${blockNumber}` : t(translationKey)}
                 </label>
               </div>
             ))}
         </FieldSet>
 
-        <FieldSet label={t('mobile_tab_height')}>
+        {/* Mobile Tab Height */}
+        <FieldSet label={
+          <>
+            <i className="fas fa-mobile-alt"></i>
+            {' '}
+            {t('mobile_tab_height')}
+          </>
+        }>
           <div className="Form-group">
             <input className="FormControl" type="text" bidi={this.values['modern-footer.mobile-tab']} placeholder="var(--mobile-tab-height) / 54px" />
             <p className="helpText">{t('mobile_tab_height_help')}</p>

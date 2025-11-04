@@ -1,80 +1,149 @@
 .huseyinfiliz-modern-footer-Page .ExtensionPage-body {
-  .ExtensionPage-permissions-header {
-      margin: 0;
-  }
-    .ExtensionPage-permissions>.container {
-	background: var(--control-bg);
-    }
   .SettingsPage {
-    background: var(--control-bg);
     padding: 20px;
-
+    max-width: 1400px;
+    margin: 0 auto;
+    
     .SettingsPage-menu {
-      background: var(--primary-color);
-      border-radius: var(--border-radius);
-      padding: 10px;
-
+      background: fade(#667c99, 10%);
+      border-radius: 10px;
+      padding: 4px;
+      margin-bottom: 20px;
+      
       ul {
         list-style: none;
         padding: 0;
         margin: 0;
-        display: ruby;
-        gap: 10px;
-
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        
         li {
+          flex: 1 1 auto;
+          min-width: 100px;
+          
           button {
-            background: var(--primary-color);
-            color: #ffffff;
-            padding: 10px 20px;
+            width: 100%;
+            background: transparent;
+            color: var(--muted-color);
+            padding: 10px 16px;
             border: none;
-            border-radius: var(--border-radius);
+            border-radius: 8px;
             cursor: pointer;
-            transition: background 0.3s ease;
-
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            white-space: nowrap;
+            
             &:hover {
-              background: darken(@primary-color, 10%);
+              color: var(--text-color);
+              background: var(--body-bg);
             }
-
+            
             &.active {
-              background: lighten(@primary-color, 10%);
-              font-weight: bold;
+              color: var(--primary-color);
+              background: var(--body-bg);
+              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+              font-weight: 700;
             }
           }
         }
       }
     }
-
+    
     .SettingsPage-content {
       background: var(--body-bg);
-      border-radius: var(--border-radius);
+      border-radius: 12px;
       padding: 15px;
-
-      fieldset {
-        margin-bottom: 20px;
-        padding: 15px;
-        border: 1px solid var(--muted-color);
-        border-radius: var(--border-radius);
-
-        legend {
+      border: 1px solid #e8ecf3;
+      
+      .container {
+        padding: 0;
+		width: auto;
+      }
+      
+      .FieldSet {
+		  margin-bottom: 32px;
+		  background: rgba(232, 236, 243, 0.25);
+		  border: 1px solid #e8ecf3;
+		  border-radius: 12px;
+		  padding: 20px;
+        
+        .FieldSet-label {
           font-size: 16px;
-          font-weight: bold;
-          color: var(--primary-color);
-          padding: 0 5px;
-        }
-
-        ul {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-
-          li {
-            margin-bottom: 10px;
-
-            .FormControl {
-              max-width: 400px;
-              padding: 8px;
-              border: 1px solid var(--muted-color);
-              border-radius: var(--border-radius);
+          font-weight: 700;
+          padding-bottom: 12px;
+          border-bottom: 1px solid #e8ecf3;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+			
+			i {
+			font-size: 18px;
+			width: 28px;
+			height: 28px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: rgba(77, 105, 142, 0.08);
+			border-radius: 8px;
+			color: #4d698e;
+			flex-shrink: 0;
+			}
+          }
+        
+        .Form-group {
+          padding: 10px 0 10px 0;
+          
+          label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 8px;
+            font-size: 14px;
+          }
+          
+          .helpText {
+            font-size: 12px;
+            color: var(--muted-color);
+            margin-top: 6px;
+            line-height: 1.5;
+            padding-left: 10px;
+            border-left: 2px solid fade(#667c99, 50%);
+          }
+          
+          input.FormControl,
+          select.FormControl {
+            padding: 8px;
+            border: 1px solid fade(#667c99, 50%);
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 180ms ease;
+            background: var(--body-bg);
+            
+            &:focus {
+              border-color: var(--primary-color);
+              outline: none;
+              box-shadow: 0 0 0 3px fade(#3273dc, 10%);
+            }
+          }
+          
+          textarea.FormControl {
+            padding: 8px;
+            border: 1px solid fade(#667c99, 50%);
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 180ms ease;
+            background: var(--body-bg);
+            
+            &:focus {
+              border-color: var(--primary-color);
+              outline: none;
+              box-shadow: 0 0 0 3px fade(#3273dc, 10%);
             }
           }
         }
@@ -83,13 +152,10 @@
   }
 }
 
-@media (max-width: 768px) {
+@media @tablet {
   .huseyinfiliz-modern-footer-Page .ExtensionPage-body {
     .SettingsPage {
-      .SettingsPage-menu {
-        text-align: center;
-        text-align: -webkit-center;
-      }
+	max-width: 768px;
     }
   }
 }

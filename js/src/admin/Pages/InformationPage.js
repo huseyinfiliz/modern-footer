@@ -11,7 +11,6 @@ export default class InformationPage extends Component {
     this.saving = false;
 
     this.fields = [
-      // 'modern-footer.title-1' kaldırıldı
       'modern-footer.right-text',
       'modern-footer.contact',
       'modern-footer.contact-link',
@@ -36,16 +35,30 @@ export default class InformationPage extends Component {
     return (
       <form onsubmit={this.onsubmit.bind(this)}>
         <div className="container">
-          {/* Forum Logo bölümü kaldırıldı */}
-
-          {FieldSet.component({ label: t('about_us') }, [
+          {FieldSet.component({ 
+            label: (
+              <>
+                <i className="fas fa-info-circle"></i>
+                {' '}
+                {t('about_us')}
+              </>
+            )
+          }, [
             <div className="Form-group">
               <textarea className="FormControl" rows="10" bidi={this.values['modern-footer.right-text']} />
               <p className="helpText">{t('about_us_help')}</p>
             </div>,
           ])}
 
-          {FieldSet.component({ label: `${t('social_media_button')} #1` }, [
+          {FieldSet.component({ 
+            label: (
+              <>
+                <i className="fas fa-share-alt"></i>
+                {' '}
+                {`${t('social_media_button')} #1`}
+              </>
+            )
+          }, [
             <div className="Form-group">
               <label>{t('font_awesome_icon')}</label>
               <input className="FormControl" bidi={this.values['modern-footer.contact']} placeholder="fas fa-link" />
@@ -56,7 +69,15 @@ export default class InformationPage extends Component {
             </div>,
           ])}
 
-          {FieldSet.component({ label: `${t('social_media_button')} #2` }, [
+          {FieldSet.component({ 
+            label: (
+              <>
+                <i className="fas fa-share-alt"></i>
+                {' '}
+                {`${t('social_media_button')} #2`}
+              </>
+            )
+          }, [
             <div className="Form-group">
               <label>{t('font_awesome_icon')}</label>
               <input className="FormControl" bidi={this.values['modern-footer.contact-2']} placeholder="fas fa-link" />
@@ -67,7 +88,15 @@ export default class InformationPage extends Component {
             </div>,
           ])}
 
-          {FieldSet.component({ label: `${t('social_media_button')} #3` }, [
+          {FieldSet.component({ 
+            label: (
+              <>
+                <i className="fas fa-share-alt"></i>
+                {' '}
+                {`${t('social_media_button')} #3`}
+              </>
+            )
+          }, [
             <div className="Form-group">
               <label>{t('font_awesome_icon')}</label>
               <input className="FormControl" bidi={this.values['modern-footer.contact-3']} placeholder="fas fa-link" />
@@ -78,7 +107,15 @@ export default class InformationPage extends Component {
             </div>,
           ])}
 
-          {FieldSet.component({ label: `${t('social_media_button')} #4` }, [
+          {FieldSet.component({ 
+            label: (
+              <>
+                <i className="fas fa-share-alt"></i>
+                {' '}
+                {`${t('social_media_button')} #4`}
+              </>
+            )
+          }, [
             <div className="Form-group">
               <label>{t('font_awesome_icon')}</label>
               <input className="FormControl" bidi={this.values['modern-footer.contact-4']} placeholder="fas fa-link" />
