@@ -3,7 +3,7 @@ import Component from 'flarum/common/Component';
 
 export default class BottomBar extends Component {
   view() {
-    const isBottomEnabled = app.forum.attribute('modern-footer.bottom-enabled') === '1';
+    const isBottomEnabled = !!app.forum.attribute('modern-footer.bottom-enabled');
     const copyright = app.forum.attribute('modern-footer.copyright');
 
     return (

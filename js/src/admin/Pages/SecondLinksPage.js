@@ -21,33 +21,34 @@ export default class SecondLinksPage extends Component {
     });
     this.translationPrefix = 'huseyinfiliz-modern-footer.admin.settings.';
   }
-  
+
   view() {
     const t = (key) => app.translator.trans(this.translationPrefix + key);
     return (
       <form onsubmit={this.onsubmit.bind(this)}>
         <div className="container">
           {this.sections.map((section, index) => {
-            return FieldSet.component({ 
-              label: (
-                <>
-                  <i className="fas fa-link"></i>
-                  {' '}
-                  {`${t('link')} #${index + 1}`}
-                </>
-              )
-            }, [
-              <div className="LinkSection">
-                <div className="Form-group">
-                  <label>{t('text')}</label>
-                  <input className="FormControl" bidi={this.values[section.titleKey]} placeholder={t('text')} />
-                </div>
-                <div className="Form-group">
-                  <label>{t('link')}</label>
-                  <input className="FormControl" bidi={this.values[section.urlKey]} placeholder={t('link')} />
-                </div>
-              </div>,
-            ]);
+            return FieldSet.component(
+              {
+                label: (
+                  <>
+                    <i className="fas fa-link"></i> {`${t('link')} #${index + 1}`}
+                  </>
+                ),
+              },
+              [
+                <div className="LinkSection">
+                  <div className="Form-group">
+                    <label>{t('text')}</label>
+                    <input className="FormControl" bidi={this.values[section.titleKey]} placeholder={t('text')} />
+                  </div>
+                  <div className="Form-group">
+                    <label>{t('link')}</label>
+                    <input className="FormControl" bidi={this.values[section.urlKey]} placeholder={t('link')} />
+                  </div>
+                </div>,
+              ]
+            );
           })}
           <div className="Form-group">
             {Button.component(
@@ -63,7 +64,7 @@ export default class SecondLinksPage extends Component {
       </form>
     );
   }
-  
+
   onsubmit(e) {
     e.preventDefault();
     if (this.saving) return;

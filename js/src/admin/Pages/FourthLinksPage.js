@@ -21,20 +21,21 @@ export default class FourthLinksPage extends Component {
     });
     this.translationPrefix = 'huseyinfiliz-modern-footer.admin.settings.';
   }
-  
+
   view() {
     const t = (key) => app.translator.trans(this.translationPrefix + key);
     return (
       <form onsubmit={this.onsubmit.bind(this)}>
         <div className="container">
           {this.sections.map((section, index) => (
-            <FieldSet key={index} label={
-              <>
-                <i className="fas fa-link"></i>
-                {' '}
-                {`${t('link')} #${index + 1}`}
-              </>
-            }>
+            <FieldSet
+              key={index}
+              label={
+                <>
+                  <i className="fas fa-link"></i> {`${t('link')} #${index + 1}`}
+                </>
+              }
+            >
               <div className="LinkSection">
                 <div className="Form-group">
                   <label>{t('text')}</label>
@@ -61,7 +62,7 @@ export default class FourthLinksPage extends Component {
       </form>
     );
   }
-  
+
   onsubmit(e) {
     e.preventDefault();
     if (this.saving) return;

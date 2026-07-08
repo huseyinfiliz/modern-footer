@@ -44,13 +44,14 @@ export default class BlockTitlesPage extends Component {
       <form onsubmit={this.onsubmit.bind(this)}>
         <div className="container">
           {this.blocks.map(({ id, iconKey, titleKey }) => (
-            <FieldSet key={id} label={
-              <>
-                <i className={id === '1' ? 'fas fa-image' : 'fas fa-th-large'}></i>
-                {' '}
-                {`${t('block')} ${id}`}
-              </>
-            }>
+            <FieldSet
+              key={id}
+              label={
+                <>
+                  <i className={id === '1' ? 'fas fa-image' : 'fas fa-th-large'}></i> {`${t('block')} ${id}`}
+                </>
+              }
+            >
               {/* id 1 ise Forum Logo bölümünü göster */}
               {id === '1' && (
                 <div className="Form-group">
@@ -119,7 +120,6 @@ export default class BlockTitlesPage extends Component {
     saveSettings(settings)
       .then(() => {
         app.alerts.show({ type: 'success' }, app.translator.trans('core.admin.settings.saved_message'));
-        this.attrs.refreshSettings?.();
       })
       .catch(() => {})
       .finally(() => {

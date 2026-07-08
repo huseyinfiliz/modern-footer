@@ -32,7 +32,7 @@ class ForumAttributes
         ];
 
         foreach ($booleanFields as $field) {
-            $settings->serializeToForum("modern-footer.{$field}", "modern-footer.{$field}");
+            $settings->serializeToForum("modern-footer.{$field}", "modern-footer.{$field}", 'boolval');
         }
 
         $settings->serializeToForum(

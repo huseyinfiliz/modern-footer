@@ -2,7 +2,6 @@ import app from 'flarum/forum/app';
 import Component from 'flarum/common/Component';
 import InfoBlock from './InfoBlock';
 import LinksBlock from './LinksBlock';
-import SocialButtons from './SocialButtons';
 import CustomHtml from './CustomHtml';
 import BottomBar from './BottomBar';
 
@@ -20,7 +19,12 @@ export default class CustomFooter extends Component {
       document.body.appendChild(scriptElement);
     }
 
-    const mobileTabHeight = app.forum.attribute('modern-footer.mobile-tab') || '0px';
+    const rawMobileTabHeight = app.forum.attribute('modern-footer.mobile-tab') || '0px';
+    // Sadece geçerli CSS uzunluk değerlerine ve var(--...) ifadelerine izin ver;
+    // { } ; < > gibi karakterleri reddederek CSS/HTML injection'ı engelle.
+    const isValidCssLength = /^\d+(\.\d+)?(px|rem|em|vh|vw|%)$/.test(rawMobileTabHeight);
+    const isValidCssVar = /^var\(--[a-zA-Z0-9-]+(\s*,\s*\d+(\.\d+)?(px|rem|em|vh|vw|%)?)?\)$/.test(rawMobileTabHeight);
+    const mobileTabHeight = isValidCssLength || isValidCssVar ? rawMobileTabHeight : '0px';
     const style = document.createElement('style');
     style.innerHTML = `
       @media (max-width: 768px) {
@@ -47,8 +51,8 @@ export default class CustomFooter extends Component {
     return (
       <div>
         <div class="row">
-          {app.forum.attribute('modern-footer.info-enabled') === '1' && <InfoBlock />}
-          {app.forum.attribute('modern-footer.links-1-enabled') === '1' && (
+          {app.forum.attribute('modern-footer.info-enabled') && <InfoBlock />}
+          {app.forum.attribute('modern-footer.links-1-enabled') && (
             <LinksBlock
               title={app.forum.attribute('modern-footer.title-2')}
               start={1}
@@ -56,7 +60,7 @@ export default class CustomFooter extends Component {
               iconClass={app.forum.attribute('modern-footer.title-fa-2')}
             />
           )}
-          {app.forum.attribute('modern-footer.links-2-enabled') === '1' && (
+          {app.forum.attribute('modern-footer.links-2-enabled') && (
             <LinksBlock
               title={app.forum.attribute('modern-footer.title-3')}
               start={7}
@@ -64,7 +68,7 @@ export default class CustomFooter extends Component {
               iconClass={app.forum.attribute('modern-footer.title-fa-3')}
             />
           )}
-          {app.forum.attribute('modern-footer.links-3-enabled') === '1' && (
+          {app.forum.attribute('modern-footer.links-3-enabled') && (
             <LinksBlock
               title={app.forum.attribute('modern-footer.title-4')}
               start={13}
@@ -72,7 +76,7 @@ export default class CustomFooter extends Component {
               iconClass={app.forum.attribute('modern-footer.title-fa-4')}
             />
           )}
-          {app.forum.attribute('modern-footer.links-4-enabled') === '1' && (
+          {app.forum.attribute('modern-footer.links-4-enabled') && (
             <LinksBlock
               title={app.forum.attribute('modern-footer.title-5')}
               start={19}

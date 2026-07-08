@@ -11,26 +11,28 @@ export default class CustomJSPage extends Component {
     this.jsSetting = Stream(app.data.settings['modern-footer.js'] || '');
     this.translationPrefix = 'huseyinfiliz-modern-footer.admin.settings.';
   }
-  
+
   view() {
     const t = (key) => app.translator.trans(this.translationPrefix + key);
     return (
       <form onsubmit={this.onsubmit.bind(this)}>
         <div className="container">
-          {FieldSet.component({ 
-            label: (
-              <>
-                <i className="fab fa-js"></i>
-                {' '}
-                {t('custom_js_code')}
-              </>
-            )
-          }, [
-            <div className="Form-group">
-              <textarea className="FormControl" bidi={this.jsSetting} rows="10" />
-            </div>,
-          ])}
-          
+          {FieldSet.component(
+            {
+              label: (
+                <>
+                  <i className="fab fa-js"></i> {t('custom_js_code')}
+                </>
+              ),
+            },
+            [
+              <div className="Form-group">
+                <textarea className="FormControl" bidi={this.jsSetting} rows="10" />
+                <p className="helpText">{t('custom_js_help')}</p>
+              </div>,
+            ]
+          )}
+
           <div className="Form-group">
             {Button.component(
               {
@@ -45,7 +47,7 @@ export default class CustomJSPage extends Component {
       </form>
     );
   }
-  
+
   onsubmit(e) {
     e.preventDefault();
     if (this.saving) return;

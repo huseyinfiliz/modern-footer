@@ -35,96 +35,101 @@ export default class InformationPage extends Component {
     return (
       <form onsubmit={this.onsubmit.bind(this)}>
         <div className="container">
-          {FieldSet.component({ 
-            label: (
-              <>
-                <i className="fas fa-info-circle"></i>
-                {' '}
-                {t('about_us')}
-              </>
-            )
-          }, [
-            <div className="Form-group">
-              <textarea className="FormControl" rows="10" bidi={this.values['modern-footer.right-text']} />
-              <p className="helpText">{t('about_us_help')}</p>
-            </div>,
-          ])}
+          {FieldSet.component(
+            {
+              label: (
+                <>
+                  <i className="fas fa-info-circle"></i> {t('about_us')}
+                </>
+              ),
+            },
+            [
+              <div className="Form-group">
+                <textarea className="FormControl" rows="10" bidi={this.values['modern-footer.right-text']} />
+                <p className="helpText">{t('about_us_help')}</p>
+              </div>,
+            ]
+          )}
 
-          {FieldSet.component({ 
-            label: (
-              <>
-                <i className="fas fa-share-alt"></i>
-                {' '}
-                {`${t('social_media_button')} #1`}
-              </>
-            )
-          }, [
-            <div className="Form-group">
-              <label>{t('font_awesome_icon')}</label>
-              <input className="FormControl" bidi={this.values['modern-footer.contact']} placeholder="fas fa-link" />
-            </div>,
-            <div className="Form-group">
-              <label>{t('social_link')}</label>
-              <input className="FormControl" bidi={this.values['modern-footer.contact-link']} placeholder="https://www.example.com/username" />
-            </div>,
-          ])}
+          {FieldSet.component(
+            {
+              label: (
+                <>
+                  <i className="fas fa-share-alt"></i> {`${t('social_media_button')} #1`}
+                </>
+              ),
+            },
+            [
+              <div className="Form-group">
+                <label>{t('font_awesome_icon')}</label>
+                <input className="FormControl" bidi={this.values['modern-footer.contact']} placeholder="fas fa-link" />
+              </div>,
+              <div className="Form-group">
+                <label>{t('social_link')}</label>
+                <input className="FormControl" bidi={this.values['modern-footer.contact-link']} placeholder="https://www.example.com/username" />
+              </div>,
+            ]
+          )}
 
-          {FieldSet.component({ 
-            label: (
-              <>
-                <i className="fas fa-share-alt"></i>
-                {' '}
-                {`${t('social_media_button')} #2`}
-              </>
-            )
-          }, [
-            <div className="Form-group">
-              <label>{t('font_awesome_icon')}</label>
-              <input className="FormControl" bidi={this.values['modern-footer.contact-2']} placeholder="fas fa-link" />
-            </div>,
-            <div className="Form-group">
-              <label>{t('social_link')}</label>
-              <input className="FormControl" bidi={this.values['modern-footer.contact-link-2']} placeholder="https://www.example.com/username" />
-            </div>,
-          ])}
+          {FieldSet.component(
+            {
+              label: (
+                <>
+                  <i className="fas fa-share-alt"></i> {`${t('social_media_button')} #2`}
+                </>
+              ),
+            },
+            [
+              <div className="Form-group">
+                <label>{t('font_awesome_icon')}</label>
+                <input className="FormControl" bidi={this.values['modern-footer.contact-2']} placeholder="fas fa-link" />
+              </div>,
+              <div className="Form-group">
+                <label>{t('social_link')}</label>
+                <input className="FormControl" bidi={this.values['modern-footer.contact-link-2']} placeholder="https://www.example.com/username" />
+              </div>,
+            ]
+          )}
 
-          {FieldSet.component({ 
-            label: (
-              <>
-                <i className="fas fa-share-alt"></i>
-                {' '}
-                {`${t('social_media_button')} #3`}
-              </>
-            )
-          }, [
-            <div className="Form-group">
-              <label>{t('font_awesome_icon')}</label>
-              <input className="FormControl" bidi={this.values['modern-footer.contact-3']} placeholder="fas fa-link" />
-            </div>,
-            <div className="Form-group">
-              <label>{t('social_link')}</label>
-              <input className="FormControl" bidi={this.values['modern-footer.contact-link-3']} placeholder="https://www.example.com/username" />
-            </div>,
-          ])}
+          {FieldSet.component(
+            {
+              label: (
+                <>
+                  <i className="fas fa-share-alt"></i> {`${t('social_media_button')} #3`}
+                </>
+              ),
+            },
+            [
+              <div className="Form-group">
+                <label>{t('font_awesome_icon')}</label>
+                <input className="FormControl" bidi={this.values['modern-footer.contact-3']} placeholder="fas fa-link" />
+              </div>,
+              <div className="Form-group">
+                <label>{t('social_link')}</label>
+                <input className="FormControl" bidi={this.values['modern-footer.contact-link-3']} placeholder="https://www.example.com/username" />
+              </div>,
+            ]
+          )}
 
-          {FieldSet.component({ 
-            label: (
-              <>
-                <i className="fas fa-share-alt"></i>
-                {' '}
-                {`${t('social_media_button')} #4`}
-              </>
-            )
-          }, [
-            <div className="Form-group">
-              <label>{t('font_awesome_icon')}</label>
-              <input className="FormControl" bidi={this.values['modern-footer.contact-4']} placeholder="fas fa-link" />
-            </div>,
-            <div className="Form-group">
-              <label>{t('social_link')}</label>
-              <input className="FormControl" bidi={this.values['modern-footer.contact-link-4']} placeholder="https://www.example.com/username" />
-            </div>,
-          ])}
+          {FieldSet.component(
+            {
+              label: (
+                <>
+                  <i className="fas fa-share-alt"></i> {`${t('social_media_button')} #4`}
+                </>
+              ),
+            },
+            [
+              <div className="Form-group">
+                <label>{t('font_awesome_icon')}</label>
+                <input className="FormControl" bidi={this.values['modern-footer.contact-4']} placeholder="fas fa-link" />
+              </div>,
+              <div className="Form-group">
+                <label>{t('social_link')}</label>
+                <input className="FormControl" bidi={this.values['modern-footer.contact-link-4']} placeholder="https://www.example.com/username" />
+              </div>,
+            ]
+          )}
 
           <div className="Form-group">
             {Button.component(

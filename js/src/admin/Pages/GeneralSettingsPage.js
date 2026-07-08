@@ -66,13 +66,13 @@ export default class GeneralSettingsPage extends Component {
     return (
       <div className="GeneralSettings">
         {/* Display Mode ayarı */}
-        <FieldSet label={
-          <>
-            <i className="fas fa-display"></i>
-            {' '}
-            {t('display_mode')}
-          </>
-        }>
+        <FieldSet
+          label={
+            <>
+              <i className="fas fa-display"></i> {t('display_mode')}
+            </>
+          }
+        >
           <div className="Form-group">
             <select
               className="FormControl"
@@ -92,13 +92,13 @@ export default class GeneralSettingsPage extends Component {
         </FieldSet>
 
         {/* Görünürlük Kontrolü */}
-        <FieldSet label={
-          <>
-            <i className="fas fa-eye"></i>
-            {' '}
-            {t('visibility_control')}
-          </>
-        }>
+        <FieldSet
+          label={
+            <>
+              <i className="fas fa-eye"></i> {t('visibility_control')}
+            </>
+          }
+        >
           <div className="Form-group">
             <select
               className="FormControl"
@@ -113,13 +113,13 @@ export default class GeneralSettingsPage extends Component {
         </FieldSet>
 
         {/* Footer Sections */}
-        <FieldSet label={
-          <>
-            <i className="fas fa-layer-group"></i>
-            {' '}
-            {t('manage_footer_sections')}
-          </>
-        }>
+        <FieldSet
+          label={
+            <>
+              <i className="fas fa-layer-group"></i> {t('manage_footer_sections')}
+            </>
+          }
+        >
           {this.fields
             .filter(({ key }) => key.includes('-enabled'))
             .map(({ key, translationKey, blockNumber }) => (
@@ -134,13 +134,13 @@ export default class GeneralSettingsPage extends Component {
         </FieldSet>
 
         {/* Mobile Tab Height */}
-        <FieldSet label={
-          <>
-            <i className="fas fa-mobile-alt"></i>
-            {' '}
-            {t('mobile_tab_height')}
-          </>
-        }>
+        <FieldSet
+          label={
+            <>
+              <i className="fas fa-mobile-alt"></i> {t('mobile_tab_height')}
+            </>
+          }
+        >
           <div className="Form-group">
             <input className="FormControl" type="text" bidi={this.values['modern-footer.mobile-tab']} placeholder="var(--mobile-tab-height) / 54px" />
             <p className="helpText">{t('mobile_tab_height_help')}</p>

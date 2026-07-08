@@ -105,12 +105,4 @@ export default class SettingsPage extends ExtensionPage {
       </div>
     );
   }
-
-  // Ayarları yeniden yükleyen fonksiyon
-  refreshSettings() {
-    app.store.find('settings').then((settings) => {
-      this.settingsStream(settings); // Ana Stream'i güncelliyoruz
-      m.redraw(); // Sayfayı yeniden çiziyoruz
-    });
-  }
 }
