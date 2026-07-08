@@ -2,9 +2,10 @@ name: Frontend Tests
 
 on:
   push:
-    branches: [main, master, develop, dev]
+    branches: [1.x, 2.x]
   pull_request:
-    branches: [main, master, develop, dev]
+    branches: [1.x, 2.x]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -19,23 +20,23 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
-          cache-dependency-path: js/package-lock.json
+          cache: 'yarn'
+          cache-dependency-path: js/yarn.lock
 
       - name: Install JS dependencies
         run: |
           cd js
-          npm ci
+          yarn install --frozen-lockfile
 
       - name: Build frontend
         run: |
           cd js
-          npm run build
+          yarn build
 
       - name: Check formatting
         run: |
           cd js
-          npm run format-check || echo "Prettier check skipped"
+          yarn format-check || echo "Prettier check skipped"
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
