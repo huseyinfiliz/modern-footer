@@ -13,9 +13,7 @@ declare(strict_types=1);
 
 namespace huseyinfiliz\ModernFooter\Tests\Unit;
 
-use Flarum\Api\Resource\ForumResource;
 use Flarum\Extend;
-use huseyinfiliz\ModernFooter\Listeners\LoadSettingsFromDatabase;
 use PHPUnit\Framework\TestCase;
 
 class ExtenderBootstrapTest extends TestCase
@@ -27,7 +25,6 @@ class ExtenderBootstrapTest extends TestCase
         $this->assertIsArray($extenders);
         $this->assertGreaterThan(0, count($extenders));
 
-        // Verify all extenders are instances of Extend classes
         foreach ($extenders as $extender) {
             $this->assertInstanceOf(Extend\ExtenderInterface::class, $extender);
         }
@@ -50,6 +47,7 @@ class ExtenderBootstrapTest extends TestCase
                 if ($frontendName === 'forum') {
                     $forumFrontendExists = true;
                 }
+
                 if ($frontendName === 'admin') {
                     $adminFrontendExists = true;
                 }
@@ -76,19 +74,19 @@ class ExtenderBootstrapTest extends TestCase
         $this->assertTrue($localesExists, 'Locales extender not found');
     }
 
-    public function testApiResourceExtenderExists(): void
+    public function testSettingsExtenderExists(): void
     {
         $extenders = require __DIR__ . '/../../extend.php';
 
-        $apiResourceExists = false;
+        $settingsExists = false;
 
         foreach ($extenders as $extender) {
-            if ($extender instanceof Extend\ApiResource) {
-                $apiResourceExists = true;
+            if ($extender instanceof Extend\Settings) {
+                $settingsExists = true;
                 break;
             }
         }
 
-        $this->assertTrue($apiResourceExists, 'ApiResource extender not found');
+        $this->assertTrue($settingsExists, 'Settings extender not found');
     }
 }
